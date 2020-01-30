@@ -19,11 +19,11 @@ public class CitiesDao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Id")
-	private String id;
+	private long id;
 	
 	@Column(name = "Description")
 	private String description;
 	
 	@Column(name = "ID_Province")
-	private String province;
+	private long province;
 }

@@ -14,7 +14,7 @@ import it.its.testEmployeesDB.repository.CitiesRepository;
 @Transactional
 public class CitiesServiceImpl implements CitiesService {
 	@Autowired
-	static CitiesRepository cittaRepository;
+	CitiesRepository cittaRepository;
 
 	@Override
 	public List<CitiesDao> SelTutti() {
