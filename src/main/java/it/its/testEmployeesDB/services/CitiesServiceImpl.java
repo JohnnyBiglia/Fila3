@@ -12,9 +12,9 @@ import it.its.testEmployeesDB.repository.CitiesRepository;
 
 @Service
 @Transactional
-public class CitiesServiceImpl implements CitiesService{
+public class CitiesServiceImpl implements CitiesService {
 	@Autowired
-	CitiesRepository cittaRepository;
+	static CitiesRepository cittaRepository;
 
 	@Override
 	public List<CitiesDao> SelTutti() {

@@ -10,9 +10,10 @@ import lombok.NoArgsConstructor;
 
 @Builder
 @Data
+
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class CitiesDto {
 	private List<CitiesDao> cittaData;
-
 }
