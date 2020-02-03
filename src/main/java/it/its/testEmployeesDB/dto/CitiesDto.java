@@ -16,3 +16,5 @@ public class CitiesDto {
 	private List<CitiesDao> cittaData;
 
 }
+
+
