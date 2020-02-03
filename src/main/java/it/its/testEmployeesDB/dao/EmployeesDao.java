@@ -10,18 +10,18 @@ import lombok.Data;
 @Entity
 @Table(name = "Employees")
 @Data
-public class EmployeesDao{
+public class EmployeesDao {
 
 	@Id
 	@Column(name = "Id")
 	private String id;
-	
+
 	@Column(name = "Name")
 	private String name;
-	
+
 	@Column(name = "Surname")
 	private String surname;
-	
+
 	@Column(name = "Email")
 	private String email;
 }

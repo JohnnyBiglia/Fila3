@@ -12,7 +12,7 @@ import it.its.testEmployeesDB.repository.EmployeesRepository;
 
 @Service
 @Transactional
-public class DipendentiServiceImpl implements EmployeesService{
+public class EmployeesServiceImpl implements EmployeesService {
 
 	@Autowired
 	EmployeesRepository dipendentiRepository;
@@ -20,5 +20,12 @@ public class DipendentiServiceImpl implements EmployeesService{
 	@Override
 	public List<EmployeesDao> SelTutti() {
 		return dipendentiRepository.findAll();
+	}
+
+	@Override
+	public EmployeesDao update(EmployeesDao employeeDetails) {
+
+		return dipendentiRepository.save(employeeDetails);
+
 	}
 }

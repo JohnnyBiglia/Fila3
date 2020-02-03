@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BaseResponseDto <T>{
+public class BaseResponseDto<T> {
 
 	private Date timestamp;
 	private int status;
