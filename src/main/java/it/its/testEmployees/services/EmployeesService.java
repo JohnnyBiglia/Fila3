@@ -7,5 +7,6 @@ import it.its.testEmployees.dao.EmployeesDao;
 public interface EmployeesService {
 
 	public List<EmployeesDao> SelTutti();
+	public void deleteEmployeesById(long id);
 
 }

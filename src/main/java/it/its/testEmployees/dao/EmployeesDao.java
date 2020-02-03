@@ -21,7 +21,7 @@ public class EmployeesDao implements Serializable {
 
 	@Id
 	@Column(name = "ID")
-	private String id;
+	private Long id;
 
 	@Column(name = "name")
 	private String name;
