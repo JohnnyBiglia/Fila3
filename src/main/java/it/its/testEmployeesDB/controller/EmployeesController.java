@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,13 +58,20 @@ public class EmployeesController {
 		return response;
 	}
 
-	@GetMapping(value = "/update", consumes = "application/json", produces = "application/json")
-	public EmployeesDao update(@RequestBody String employeeDetails)
+	@PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
+	public BaseResponseDto<EmployeesDao> update(@RequestBody String employeeDetails)
 			throws JsonMappingException, JsonProcessingException {
+		BaseResponseDto<EmployeesDao> response = new BaseResponseDto<>();
+
+		response.setTimestamp(new Date());
+		response.setStatus(HttpStatus.OK.value());
+		response.setMessage("UPDATE_ELABORATO_CORRETTAMENTE");
+
 		ObjectMapper mapper = new ObjectMapper();
 		EmployeesDao employee = mapper.readValue(employeeDetails, EmployeesDao.class);
 		EmployeesDao status = employeesService.update(employee);
-		return status;
+		response.setResponse(status);
+		return response;
 
 	}
 
