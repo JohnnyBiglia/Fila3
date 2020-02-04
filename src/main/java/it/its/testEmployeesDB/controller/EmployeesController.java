@@ -65,12 +65,17 @@ public class EmployeesController {
 
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
-		response.setMessage("UPDATE_ELABORATO_CORRETTAMENTE");
 
 		ObjectMapper mapper = new ObjectMapper();
 		EmployeesDao employee = mapper.readValue(employeeDetails, EmployeesDao.class);
-		EmployeesDao status = employeesService.update(employee);
-		response.setResponse(status);
+
+		if (employee.getId() != 0) {
+			EmployeesDao status = employeesService.update(employee);
+			response.setResponse(status);
+			response.setMessage("UPDATE_ELABORATO_CORRETTAMENTE");
+		} else {
+			response.setMessage("ID_NON_INSERITO");
+		}
 		return response;
 
 	}

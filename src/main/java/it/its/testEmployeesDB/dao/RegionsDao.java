@@ -11,11 +11,11 @@ import lombok.Data;
 @Table(name = "Regions")
 @Data
 public class RegionsDao {
-	
+
 	@Id
 	@Column(name = "Id")
-	private String id;
-	
+	private int id;
+
 	@Column(name = "Description")
 	private String description;
 }

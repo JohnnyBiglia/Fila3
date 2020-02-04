@@ -10,15 +10,19 @@ import org.springframework.stereotype.Service;
 import it.its.testEmployeesDB.dao.ProvincesDao;
 import it.its.testEmployeesDB.repository.ProvincesRepository;
 
-
 @Service
 @Transactional
-public class ProvincesServiceImpl implements ProvincesService{
+public class ProvincesServiceImpl implements ProvincesService {
 	@Autowired
-	ProvincesRepository provincieRepository;
+	ProvincesRepository provinceRepository;
 
 	@Override
 	public List<ProvincesDao> SelTutti() {
-		return provincieRepository.findAll();
+		return provinceRepository.findAll();
+	}
+
+	@Override
+	public ProvincesDao update(ProvincesDao province) {
+		return provinceRepository.save(province);
 	}
 }

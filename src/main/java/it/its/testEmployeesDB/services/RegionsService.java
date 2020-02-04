@@ -6,4 +6,6 @@ import it.its.testEmployeesDB.dao.RegionsDao;
 
 public interface RegionsService {
 	public List<RegionsDao> SelTutti();
+
+	public RegionsDao update(RegionsDao region);
 }

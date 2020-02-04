@@ -12,12 +12,17 @@ import it.its.testEmployeesDB.repository.CountriesRepository;
 
 @Service
 @Transactional
-public class CountriesServiceImpl implements CountriesService{
+public class CountriesServiceImpl implements CountriesService {
 	@Autowired
 	CountriesRepository countriesRepository;
 
 	@Override
 	public List<CountriesDao> SelTutti() {
 		return countriesRepository.findAll();
+	}
+
+	@Override
+	public CountriesDao update(CountriesDao country) {
+		return countriesRepository.save(country);
 	}
 }

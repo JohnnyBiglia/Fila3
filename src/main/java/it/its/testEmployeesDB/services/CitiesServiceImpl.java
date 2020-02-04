@@ -12,12 +12,17 @@ import it.its.testEmployeesDB.repository.CitiesRepository;
 
 @Service
 @Transactional
-public class CitiesServiceImpl implements CitiesService{
+public class CitiesServiceImpl implements CitiesService {
 	@Autowired
 	CitiesRepository cittaRepository;
 
 	@Override
 	public List<CitiesDao> SelTutti() {
 		return cittaRepository.findAll();
+	}
+
+	@Override
+	public CitiesDao update(CitiesDao city) {
+		return cittaRepository.save(city);
 	}
 }

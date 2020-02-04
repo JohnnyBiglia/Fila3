@@ -14,7 +14,7 @@ public class EmployeesDao {
 
 	@Id
 	@Column(name = "Id")
-	private String id;
+	private int id;
 
 	@Column(name = "Name")
 	private String name;

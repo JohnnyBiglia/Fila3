@@ -6,4 +6,6 @@ import it.its.testEmployeesDB.dao.ProvincesDao;
 
 public interface ProvincesService {
 	public List<ProvincesDao> SelTutti();
+
+	public ProvincesDao update(ProvincesDao province);
 }

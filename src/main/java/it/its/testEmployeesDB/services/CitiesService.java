@@ -6,4 +6,6 @@ import it.its.testEmployeesDB.dao.CitiesDao;
 
 public interface CitiesService {
 	public List<CitiesDao> SelTutti();
+
+	public CitiesDao update(CitiesDao city);
 }

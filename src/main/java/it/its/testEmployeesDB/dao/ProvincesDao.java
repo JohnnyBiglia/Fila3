@@ -6,15 +6,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+
 @Entity
 @Table(name = "Provinces")
 @Data
 public class ProvincesDao {
-	
+
 	@Id
 	@Column(name = "Id")
-	private String id;
-	
+	private int id;
+
 	@Column(name = "Description")
 	private String description;
 }
