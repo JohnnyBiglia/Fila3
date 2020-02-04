@@ -22,8 +22,9 @@ import it.its.testEmployeesDB.dto.BaseResponseDto;
 import it.its.testEmployeesDB.dto.EmployeesDto;
 import it.its.testEmployeesDB.services.EmployeesService;
 
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(value = "api/Employees")
+@RequestMapping(value = "api/employees")
 public class EmployeesController {
 	private static final Logger logger = LoggerFactory.getLogger(EmployeesController.class);
 
