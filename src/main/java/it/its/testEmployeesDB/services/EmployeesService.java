@@ -6,4 +6,6 @@ import it.its.testEmployeesDB.dao.EmployeesDao;
 
 public interface EmployeesService {
 	public List<EmployeesDao> SelTutti();
+
+	public void create(EmployeesDao empl);
 }

@@ -12,9 +12,9 @@ import lombok.Data;
 public class CountriesDao {
 	
 	@Id
-	@Column(name = "ISO")
+	@Column(name = "iso")
 	private String iso;
 	
-	@Column(name = "Description")
+	@Column(name = "description")
 	private String description;
 }

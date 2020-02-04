@@ -20,4 +20,8 @@ public class CitiesServiceImpl implements CitiesService {
 	public List<CitiesDao> SelTutti() {
 		return cittaRepository.findAll();
 	}
+	
+	public void create(CitiesDao city) {
+		cittaRepository.saveAndFlush(city);
+	}
 }

@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,5 +53,21 @@ public class CountriesController {
 		response.setResponse(dto);
 		
 		return response;
+	}
+	
+	@PostMapping("/add")
+	public BaseResponseDto<List<CountriesDto>> createCity(@RequestBody CountriesDao country) {
+		BaseResponseDto<List<CountriesDto>> response = new BaseResponseDto<>();
+
+		logger.info("****** CREATE *******");
+
+		countriesService.create(country);
+
+		response.setTimestamp(new Date());
+		response.setStatus(HttpStatus.OK.value());
+		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
+
+		return response;
+
 	}
 }

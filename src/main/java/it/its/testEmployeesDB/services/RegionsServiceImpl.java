@@ -21,4 +21,9 @@ public class RegionsServiceImpl implements RegionsService{
 	public List<RegionsDao> SelTutti() {
 		return regioniRepository.findAll();
 	}
+
+	@Override
+	public void create(RegionsDao region) {
+		regioniRepository.saveAndFlush(region);
+	}
 }

@@ -20,4 +20,9 @@ public class CountriesServiceImpl implements CountriesService{
 	public List<CountriesDao> SelTutti() {
 		return countriesRepository.findAll();
 	}
+
+	@Override
+	public void create(CountriesDao country) {
+		countriesRepository.saveAndFlush(country);		
+	}
 }

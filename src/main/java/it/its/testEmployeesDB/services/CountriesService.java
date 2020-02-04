@@ -6,4 +6,7 @@ import it.its.testEmployeesDB.dao.CountriesDao;
 
 public interface CountriesService {
 	public List<CountriesDao> SelTutti();
+	
+	public void create(CountriesDao country);
+
 }

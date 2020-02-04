@@ -13,9 +13,9 @@ import lombok.Data;
 public class RegionsDao {
 	
 	@Id
-	@Column(name = "Id")
-	private String id;
+	@Column(name = "id")
+	private int id;
 	
-	@Column(name = "Description")
+	@Column(name = "description")
 	private String description;
 }

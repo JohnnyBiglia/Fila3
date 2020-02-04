@@ -21,4 +21,9 @@ public class ProvincesServiceImpl implements ProvincesService{
 	public List<ProvincesDao> SelTutti() {
 		return provincieRepository.findAll();
 	}
+
+	@Override
+	public void create(ProvincesDao province) {
+		provincieRepository.saveAndFlush(province);
+	}
 }

@@ -2,8 +2,6 @@ package it.its.testEmployeesDB.dao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,19 +9,19 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 @Entity
-@Table(name = "Cities")
+@Table(name = "cities")
 @Data
 @Getter
 @Setter
 public class CitiesDao {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Id")
+	@Column(name = "id")
 	private long id;
 	
-	@Column(name = "Description")
+	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "ID_Province")
-	private long province;
+	@Column(name = "id_province")
+	private int province;
 }
+ 
