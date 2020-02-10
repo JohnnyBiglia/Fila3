@@ -1,6 +1,7 @@
 package it.its.testEmployeesDB.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -20,5 +21,11 @@ public class DipendentiServiceImpl implements EmployeesService{
 	@Override
 	public List<EmployeesDao> SelTutti() {
 		return dipendentiRepository.findAll();
+	}
+
+	@Override
+	public  Optional<EmployeesDao> SelOnce(long id) {
+		// TODO Auto-generated method stub
+		return dipendentiRepository.findById(id);
 	}
 }
