@@ -8,4 +8,6 @@ public interface CitiesService {
 	public List<CitiesDao> SelTutti();
 
 	public CitiesDao update(CitiesDao city);
+
+	public void create(CitiesDao city);
 }

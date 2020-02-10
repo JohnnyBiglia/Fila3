@@ -8,4 +8,7 @@ public interface CountriesService {
 	public List<CountriesDao> SelTutti();
 
 	public CountriesDao update(CountriesDao country);
+	
+	public void create(CountriesDao country);
+
 }

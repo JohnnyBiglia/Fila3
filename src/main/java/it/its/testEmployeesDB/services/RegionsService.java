@@ -8,4 +8,6 @@ public interface RegionsService {
 	public List<RegionsDao> SelTutti();
 
 	public RegionsDao update(RegionsDao region);
+
+	public void create(RegionsDao region);
 }

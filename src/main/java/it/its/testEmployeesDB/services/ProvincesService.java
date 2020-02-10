@@ -8,4 +8,6 @@ public interface ProvincesService {
 	public List<ProvincesDao> SelTutti();
 
 	public ProvincesDao update(ProvincesDao province);
+
+	public void create(ProvincesDao province);
 }

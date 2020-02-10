@@ -8,4 +8,6 @@ public interface EmployeesService {
 	public List<EmployeesDao> SelTutti();
 
 	public EmployeesDao update(EmployeesDao employeeDetails);
+
+	public void create(EmployeesDao empl);
 }

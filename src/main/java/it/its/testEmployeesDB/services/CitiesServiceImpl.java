@@ -25,4 +25,8 @@ public class CitiesServiceImpl implements CitiesService {
 	public CitiesDao update(CitiesDao city) {
 		return cittaRepository.save(city);
 	}
+	
+	public void create(CitiesDao city) {
+		cittaRepository.saveAndFlush(city);
+	}
 }

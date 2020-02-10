@@ -25,4 +25,9 @@ public class RegionsServiceImpl implements RegionsService {
 	public RegionsDao update(RegionsDao region) {
 		return regioniRepository.save(region);
 	}
+
+	@Override
+	public void create(RegionsDao region) {
+		regioniRepository.saveAndFlush(region);
+	}
 }

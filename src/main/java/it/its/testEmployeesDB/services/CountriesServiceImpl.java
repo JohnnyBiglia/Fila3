@@ -25,4 +25,9 @@ public class CountriesServiceImpl implements CountriesService {
 	public CountriesDao update(CountriesDao country) {
 		return countriesRepository.save(country);
 	}
+
+	@Override
+	public void create(CountriesDao country) {
+		countriesRepository.saveAndFlush(country);
+	}
 }

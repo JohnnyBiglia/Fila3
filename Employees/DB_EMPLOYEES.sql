@@ -2,47 +2,47 @@ CREATE DATABASE  IF NOT EXISTS `Employees_management` /*!40100 DEFAULT CHARACTER
 USE `Employees_management`;
 
 CREATE TABLE `countries` (
-  `ISO` varchar(3) NOT NULL,
-  `Description` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`ISO`)
+  `iso` varchar(3) NOT NULL,
+  `description` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`iso`)
 );
 
 CREATE TABLE `regions` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `Description` varchar(30) DEFAULT NULL,
-  `ISO_Country` varchar(3) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  FOREIGN KEY (`ISO_Country`) REFERENCES `countries` (`ISO`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `description` varchar(30) DEFAULT NULL,
+  `iso_country` varchar(3) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`iso_country`) REFERENCES `countries` (`iso`)
 );
 
 CREATE TABLE `provinces` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `Description` varchar(30) DEFAULT NULL,
-  `ID_Region` int DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  FOREIGN KEY (`ID_Region`) REFERENCES `regions` (`ID`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `description` varchar(30) DEFAULT NULL,
+  `id_region` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`id_region`) REFERENCES `regions` (`id`)
 );
 
 CREATE TABLE `cities` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `Description` varchar(30) DEFAULT NULL,
-  `ID_Province` int DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  FOREIGN KEY (`ID_Province`) REFERENCES `provinces` (`ID`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `description` varchar(30) DEFAULT NULL,
+  `id_province` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`id_province`) REFERENCES `provinces` (`id`)
 );
 
 CREATE TABLE `employees` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `Name` varchar(60) DEFAULT NULL,
-  `Surname` varchar(60) DEFAULT NULL,
-  `TaxCode` varchar(30) DEFAULT NULL,
-  `ID_City` int DEFAULT NULL,
-  `Address` varchar(50) DEFAULT NULL,
-  `Gender` char(1) default null,
-  `Email` varchar(40) DEFAULT NULL,
-  `PhoneNumber` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  FOREIGN KEY (`ID_City`) REFERENCES `cities` (`ID`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) DEFAULT NULL,
+  `surname` varchar(60) DEFAULT NULL,
+  `taxCode` varchar(30) DEFAULT NULL,
+  `id_city` int DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `gender` char(1) default null,
+  `email` varchar(40) DEFAULT NULL,
+  `phonenumber` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`id_city`) REFERENCES `cities` (`id`)
 );
 
 use Employees_management;

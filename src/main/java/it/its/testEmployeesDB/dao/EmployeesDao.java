@@ -13,15 +13,15 @@ import lombok.Data;
 public class EmployeesDao {
 
 	@Id
-	@Column(name = "Id")
+	@Column(name = "id")
 	private int id;
-
-	@Column(name = "Name")
+	
+	@Column(name = "name")
 	private String name;
 
-	@Column(name = "Surname")
+	@Column(name = "surname")
 	private String surname;
 
-	@Column(name = "Email")
+	@Column(name = "email")
 	private String email;
 }

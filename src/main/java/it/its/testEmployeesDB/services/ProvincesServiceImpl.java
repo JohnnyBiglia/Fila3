@@ -25,4 +25,9 @@ public class ProvincesServiceImpl implements ProvincesService {
 	public ProvincesDao update(ProvincesDao province) {
 		return provinceRepository.save(province);
 	}
+
+	@Override
+	public void create(ProvincesDao province) {
+		provincieRepository.saveAndFlush(province);
+	}
 }
