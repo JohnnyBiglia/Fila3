@@ -3,7 +3,9 @@ package it.its.testEmployeesDB.services;
 import java.util.List;
 
 import it.its.testEmployeesDB.dao.EmployeesDao;
+import it.its.testEmployeesDB.dto.EmployeesDto;
 
 public interface EmployeesService {
-	public List<EmployeesDao> SelTutti();
+	public List<EmployeesDto> SelTutti();
+	public void deleteEmployeesById(long id);
 }
