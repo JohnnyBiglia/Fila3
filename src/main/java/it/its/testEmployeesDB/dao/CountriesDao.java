@@ -11,11 +11,11 @@ import lombok.Data;
 @Table(name = "Countries")
 @Data
 public class CountriesDao {
-	
+
 	@Id
 	@Column(name = "iso")
-	private String iso;
-	
+	private long iso;
+
 	@Column(name = "description")
 	private String description;
 }

@@ -28,6 +28,6 @@ public class ProvincesServiceImpl implements ProvincesService {
 
 	@Override
 	public void create(ProvincesDao province) {
-		provincieRepository.saveAndFlush(province);
+		provinceRepository.saveAndFlush(province);
 	}
 }
