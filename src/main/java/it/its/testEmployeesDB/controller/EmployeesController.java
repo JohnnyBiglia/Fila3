@@ -36,8 +36,6 @@ public class EmployeesController {
 		response.setStatus(HttpStatus.OK.value());
 		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
 		
-	
-		
 		EmployeesDto dto = new EmployeesDto();
 		dto.setDipendentiDato(dipendenti);
 		
