@@ -14,7 +14,7 @@ public class RegionsDao {
 	
 	@Id
 	@Column(name = "Id")
-	private String id;
+	private long id;
 	
 	@Column(name = "Description")
 	private String description;

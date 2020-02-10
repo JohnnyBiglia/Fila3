@@ -13,7 +13,7 @@ public class ProvincesDao {
 	
 	@Id
 	@Column(name = "Id")
-	private String id;
+	private long id;
 	
 	@Column(name = "Description")
 	private String description;

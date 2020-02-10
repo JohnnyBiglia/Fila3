@@ -26,7 +26,7 @@ public class EmployeesController {
 	@Autowired
 	EmployeesService dipendentiService;
 	
-	@GetMapping(produces = "application/json", value="/fetchOnce/{idEmployees}")
+	@GetMapping(produces = "application/json", value="/fetchOnce/employee/{idEmployees}")
 	public BaseResponseDto<EmployeesDto> SelOnce(@PathVariable("idEmployees") long idEmployees){
 		BaseResponseDto<EmployeesDto> response = new BaseResponseDto<>();
 		

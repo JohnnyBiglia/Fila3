@@ -1,6 +1,7 @@
 package it.its.testEmployeesDB.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -19,5 +20,11 @@ public class CitiesServiceImpl implements CitiesService{
 	@Override
 	public List<CitiesDao> SelTutti() {
 		return cittaRepository.findAll();
+	}
+
+	@Override
+	public Optional<CitiesDao> SelOnce(long idCity) {
+		// TODO Auto-generated method stub
+		return cittaRepository.findById(idCity);
 	}
 }

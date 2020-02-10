@@ -1,6 +1,7 @@
 package it.its.testEmployeesDB.dto;
 
 import java.util.List;
+import java.util.Optional;
 
 import it.its.testEmployeesDB.dao.CountriesDao;
 import lombok.AllArgsConstructor;
@@ -14,5 +15,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CountriesDto {
 	private List<CountriesDao> countriesData;
+	private Optional<CountriesDao> countriesDato;
 
 }
