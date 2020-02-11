@@ -12,7 +12,7 @@ import lombok.Data;
 public class CitiesDao {
 	@Id
 	@Column(name = "Id")
-	private long id;
+	private int id;
 	
 	@Column(name = "Description")
 	private String description;

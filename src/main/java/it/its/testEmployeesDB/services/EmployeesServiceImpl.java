@@ -13,7 +13,7 @@ import it.its.testEmployeesDB.repository.EmployeesRepository;
 
 @Service
 @Transactional
-public class DipendentiServiceImpl implements EmployeesService{
+public class EmployeesServiceImpl implements EmployeesService{
 
 	@Autowired
 	EmployeesRepository dipendentiRepository;
@@ -24,8 +24,8 @@ public class DipendentiServiceImpl implements EmployeesService{
 	}
 
 	@Override
-	public  Optional<EmployeesDao> SelOnce(long id) {
+	public  Optional<EmployeesDao> SelOnce(int id) {
 		// TODO Auto-generated method stub
-		return dipendentiRepository.findById(id);
+		return dipendentiRepository.findById((long) id);
 	}
 }

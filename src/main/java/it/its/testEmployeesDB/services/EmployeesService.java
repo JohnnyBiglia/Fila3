@@ -7,5 +7,5 @@ import it.its.testEmployeesDB.dao.EmployeesDao;
 
 public interface EmployeesService {
 	public List<EmployeesDao> SelTutti();
-	public Optional<EmployeesDao> SelOnce(long idEmployees);
+	public Optional<EmployeesDao> SelOnce(int idEmployees);
 }

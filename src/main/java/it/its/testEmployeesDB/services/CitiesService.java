@@ -8,5 +8,5 @@ import it.its.testEmployeesDB.dao.CitiesDao;
 public interface CitiesService {
 	public List<CitiesDao> SelTutti();
 
-	public Optional<CitiesDao> SelOnce(long idCity);
+	public Optional<CitiesDao> SelOnce(int idCity);
 }

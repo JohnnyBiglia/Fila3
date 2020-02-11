@@ -58,7 +58,7 @@ public class CitiesController {
 	}
 	
 	@GetMapping(produces = "application/json", value="/fetchOnce/{idCity}")
-	public BaseResponseDto<CitiesDto> SelOnce(@PathVariable("idCity") long idCity){
+	public BaseResponseDto<CitiesDto> SelOnce(@PathVariable("idCity") int idCity){
 		BaseResponseDto<CitiesDto> response = new BaseResponseDto<>();
 		
 		Optional<CitiesDao> citta = cittaService.SelOnce(idCity);

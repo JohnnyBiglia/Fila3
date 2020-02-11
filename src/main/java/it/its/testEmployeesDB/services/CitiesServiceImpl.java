@@ -23,8 +23,8 @@ public class CitiesServiceImpl implements CitiesService{
 	}
 
 	@Override
-	public Optional<CitiesDao> SelOnce(long idCity) {
+	public Optional<CitiesDao> SelOnce(int idCity) {
 		// TODO Auto-generated method stub
-		return cittaRepository.findById(idCity);
+		return cittaRepository.findById((long) idCity);
 	}
 }

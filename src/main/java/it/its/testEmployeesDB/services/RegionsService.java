@@ -8,5 +8,5 @@ import it.its.testEmployeesDB.dao.RegionsDao;
 
 public interface RegionsService {
 	public List<RegionsDao> SelTutti();
-	public Optional<RegionsDao> SelOnce(long idRegion);
+	public Optional<RegionsDao> SelOnce(int idRegion);
 }

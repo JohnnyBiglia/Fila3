@@ -58,7 +58,7 @@ public class RegionsController {
 	}
 	
 	@GetMapping(produces = "application/json", value="/fetchOnce/{idRegion}")
-	public BaseResponseDto<RegionsDto> SelOnce(@PathVariable("idRegion") long idRegion){
+	public BaseResponseDto<RegionsDto> SelOnce(@PathVariable("idRegion") int idRegion){
 		BaseResponseDto<RegionsDto> response = new BaseResponseDto<>();
 		
 		Optional<RegionsDao> regione = regionsService.SelOnce(idRegion);

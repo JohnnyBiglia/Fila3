@@ -24,8 +24,8 @@ public class RegionsServiceImpl implements RegionsService{
 	}
 
 	@Override
-	public Optional<RegionsDao> SelOnce(long idRegion) {
+	public Optional<RegionsDao> SelOnce(int idRegion) {
 		// TODO Auto-generated method stub
-		return regioniRepository.findById(idRegion);
+		return regioniRepository.findById((long) idRegion);
 	}
 }
