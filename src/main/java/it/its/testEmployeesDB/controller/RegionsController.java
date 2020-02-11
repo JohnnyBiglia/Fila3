@@ -2,6 +2,7 @@ package it.its.testEmployeesDB.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +19,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import it.its.testEmployeesDB.dao.CitiesDao;
 import it.its.testEmployeesDB.dao.RegionsDao;
 import it.its.testEmployeesDB.dto.BaseResponseDto;
+import it.its.testEmployeesDB.dto.CitiesDto;
 import it.its.testEmployeesDB.dto.RegionsDto;
 import it.its.testEmployeesDB.services.RegionsService;
 
@@ -96,5 +99,24 @@ public class RegionsController {
 
 		return response;
 
+	}
+	
+	@GetMapping(produces = "application/json", value="/fetchOnce/{idRegion}")
+	public BaseResponseDto<RegionsDto> SelOnce(@PathVariable("idRegion") long idRegion){
+		BaseResponseDto<RegionsDto> response = new BaseResponseDto<>();
+		
+		Optional<RegionsDao> regione = regionsService.SelOnce(idRegion);
+		
+		response.setTimestamp(new Date());
+		response.setStatus(HttpStatus.OK.value());
+		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
+		
+		RegionsDto dto = new RegionsDto();
+		dto.setRegionDato(regione);
+		
+		
+		response.setResponse(dto);
+		
+		return response;
 	}
 }

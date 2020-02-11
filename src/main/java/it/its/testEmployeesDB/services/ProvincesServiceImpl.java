@@ -1,6 +1,7 @@
 package it.its.testEmployeesDB.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -29,5 +30,11 @@ public class ProvincesServiceImpl implements ProvincesService {
 	@Override
 	public void create(ProvincesDao province) {
 		provinceRepository.saveAndFlush(province);
+	}
+
+	@Override
+	public Optional<ProvincesDao> SelOnce(long idProvince) {
+		// TODO Auto-generated method stub
+		return provincieRepository.findById(idProvince);
 	}
 }

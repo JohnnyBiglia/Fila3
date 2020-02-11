@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import it.its.testEmployeesDB.dao.EmployeesDao;
 import it.its.testEmployeesDB.dto.BaseResponseDto;
@@ -31,6 +35,26 @@ public class EmployeesController {
 
 	@Autowired
 	EmployeesService employeesService;
+	
+	@GetMapping(produces = "application/json", value="/fetchOnce/employee/{idEmployees}")
+	public BaseResponseDto<EmployeesDto> SelOnce(@PathVariable("idEmployees") long idEmployees){
+		BaseResponseDto<EmployeesDto> response = new BaseResponseDto<>();
+		
+		Optional<EmployeesDao> dipendenti = dipendentiService.SelOnce(idEmployees);
+		
+		response.setTimestamp(new Date());
+		response.setStatus(HttpStatus.OK.value());
+		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
+		
+		EmployeesDto dto = new EmployeesDto();
+		dto.setDipendentiDato(dipendenti);
+		
+		
+		response.setResponse(dto);
+		
+		return response;
+	}
+	
 
 	@GetMapping(produces = "application/json")
 	public BaseResponseDto<List<EmployeesDto>> fetchAll() {

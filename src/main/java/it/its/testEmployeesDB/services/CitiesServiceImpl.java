@@ -29,4 +29,10 @@ public class CitiesServiceImpl implements CitiesService {
 	public void create(CitiesDao city) {
 		cittaRepository.saveAndFlush(city);
 	}
+
+	@Override
+	public Optional<CitiesDao> SelOnce(long idCity) {
+		// TODO Auto-generated method stub
+		return cittaRepository.findById(idCity);
+	}
 }

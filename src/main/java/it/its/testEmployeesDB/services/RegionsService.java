@@ -1,7 +1,9 @@
 package it.its.testEmployeesDB.services;
 
 import java.util.List;
+import java.util.Optional;
 
+import it.its.testEmployeesDB.dao.ProvincesDao;
 import it.its.testEmployeesDB.dao.RegionsDao;
 
 public interface RegionsService {
@@ -10,4 +12,5 @@ public interface RegionsService {
 	public RegionsDao update(RegionsDao region);
 
 	public void create(RegionsDao region);
+	public Optional<RegionsDao> SelOnce(long idRegion);
 }

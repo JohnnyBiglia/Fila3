@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.its.testEmployeesDB.dao.CountriesDao;
+import it.its.testEmployeesDB.dao.EmployeesDao;
 import it.its.testEmployeesDB.repository.CountriesRepository;
 
 @Service
@@ -29,5 +30,10 @@ public class CountriesServiceImpl implements CountriesService {
 	@Override
 	public void create(CountriesDao country) {
 		countriesRepository.saveAndFlush(country);
+	}
+
+	@Override
+	public Optional<CountriesDao> SelOnce(String idCountry) {
+		return countriesRepository.findByIso(idCountry);
 	}
 }

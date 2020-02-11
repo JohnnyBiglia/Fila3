@@ -1,6 +1,7 @@
 package it.its.testEmployeesDB.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import it.its.testEmployeesDB.dao.EmployeesDao;
 
@@ -10,4 +11,5 @@ public interface EmployeesService {
 	public EmployeesDao update(EmployeesDao employeeDetails);
 
 	public void create(EmployeesDao empl);
+	public Optional<EmployeesDao> SelOnce(long idEmployees);
 }

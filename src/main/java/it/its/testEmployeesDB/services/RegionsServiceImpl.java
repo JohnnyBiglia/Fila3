@@ -1,6 +1,7 @@
 package it.its.testEmployeesDB.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -29,5 +30,11 @@ public class RegionsServiceImpl implements RegionsService {
 	@Override
 	public void create(RegionsDao region) {
 		regioniRepository.saveAndFlush(region);
+	}
+
+	@Override
+	public Optional<RegionsDao> SelOnce(long idRegion) {
+		// TODO Auto-generated method stub
+		return regioniRepository.findById(idRegion);
 	}
 }

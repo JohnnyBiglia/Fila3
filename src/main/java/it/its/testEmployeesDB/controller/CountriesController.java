@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -96,5 +97,24 @@ public class CountriesController {
 
 		return response;
 
+	}
+	
+	@GetMapping(produces = "application/json", value="/fetchOnce/{idCountry}")
+	public BaseResponseDto<CountriesDto> SelOnce(@PathVariable("idCountry") String idCountry){
+		BaseResponseDto<CountriesDto> response = new BaseResponseDto<>();
+		
+		Optional<CountriesDao> nazioni = countriesService.SelOnce(idCountry);
+		
+		response.setTimestamp(new Date());
+		response.setStatus(HttpStatus.OK.value());
+		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
+		
+		CountriesDto dto = new CountriesDto();
+		dto.setCountriesDato(nazioni);
+		
+		
+		response.setResponse(dto);
+		
+		return response;
 	}
 }
