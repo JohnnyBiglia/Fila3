@@ -35,12 +35,12 @@ public class RegionsServiceImpl implements RegionsService {
 	@Override
 	public Optional<RegionsDao> SelOnce(int idRegion) {
 		// TODO Auto-generated method stub
-		return regioniRepository.findById((long) idRegion);
+		return regioniRepository.findById(idRegion);
 	}
-	
+
 	@Override
-	public void deleteRegionsById(String idRegions) {
-		regionRepository.deleteById(idRegions);
-		
+	public void deleteRegionsById(int idRegions) {
+		regioniRepository.deleteById(idRegions);
+
 	}
 }

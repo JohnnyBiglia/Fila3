@@ -11,15 +11,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-<<<<<<< HEAD
-public class BaseResponseDto <T>{
-
-	private Date timestamp;
-	private int status;
-	private String error;
-	private String message;
-	private Object response;
-=======
 public class BaseResponseDto<T> {
 
 	private Date timestamp;
@@ -28,5 +19,4 @@ public class BaseResponseDto<T> {
 	private String message;
 	private Object response;
 
->>>>>>> refs/remotes/origin/test
 }

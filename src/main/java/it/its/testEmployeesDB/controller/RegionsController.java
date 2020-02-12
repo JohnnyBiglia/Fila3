@@ -7,11 +7,12 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,10 +21,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import it.its.testEmployeesDB.dao.CitiesDao;
 import it.its.testEmployeesDB.dao.RegionsDao;
 import it.its.testEmployeesDB.dto.BaseResponseDto;
-import it.its.testEmployeesDB.dto.CitiesDto;
 import it.its.testEmployeesDB.dto.RegionsDto;
 import it.its.testEmployeesDB.services.RegionsService;
 
@@ -85,7 +84,7 @@ public class RegionsController {
 		return response;
 
 	}
-	
+
 	@PostMapping("/add")
 	public BaseResponseDto<List<RegionsDto>> createCity(@RequestBody RegionsDao region) {
 		BaseResponseDto<List<RegionsDto>> response = new BaseResponseDto<>();
@@ -101,28 +100,29 @@ public class RegionsController {
 		return response;
 
 	}
-	
-	@GetMapping(produces = "application/json", value="/fetchOnce/{idRegion}")
-	public BaseResponseDto<RegionsDto> SelOnce(@PathVariable("idRegion") int idRegion){
+
+	@GetMapping(produces = "application/json", value = "/fetchOnce/{idRegion}")
+	public BaseResponseDto<RegionsDto> SelOnce(@PathVariable("idRegion") int idRegion) {
 		BaseResponseDto<RegionsDto> response = new BaseResponseDto<>();
-		
+
 		Optional<RegionsDao> regione = regionsService.SelOnce(idRegion);
-		
+
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
 		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
-		
+
 		RegionsDto dto = new RegionsDto();
 		dto.setRegionDato(regione);
-		
-		
+
 		response.setResponse(dto);
-		
+
 		return response;
 	}
-	
+
 	@GetMapping(value = "/delete/{idRegions}", produces = "application/json") // percorso per richiamare il delete
-	public BaseResponseDto<String> deleteRegionsById(@PathVariable("idRegions") String idRegions) {//dichiaro in un long, l'ID da eliminare
+	public BaseResponseDto<String> deleteRegionsById(@PathVariable("idRegions") int idRegions) {// dichiaro in un
+																								// long, l'ID da
+																								// eliminare
 		BaseResponseDto<String> response = new BaseResponseDto<String>();
 		logger.info("****** Cancella la regions con id " + idRegions + "******");
 

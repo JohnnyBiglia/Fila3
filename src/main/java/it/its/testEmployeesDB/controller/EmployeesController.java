@@ -7,8 +7,10 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,10 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import it.its.testEmployeesDB.dao.EmployeesDao;
 import it.its.testEmployeesDB.dto.BaseResponseDto;
@@ -36,26 +34,24 @@ public class EmployeesController {
 
 	@Autowired
 	EmployeesService employeesService;
-	
-	@GetMapping(produces = "application/json", value="/fetchOnce/employee/{idEmployees}")
-	public BaseResponseDto<EmployeesDto> SelOnce(@PathVariable("idEmployees") int idEmployees){
+
+	@GetMapping(produces = "application/json", value = "/fetchOnce/employee/{idEmployees}")
+	public BaseResponseDto<EmployeesDto> SelOnce(@PathVariable("idEmployees") int idEmployees) {
 		BaseResponseDto<EmployeesDto> response = new BaseResponseDto<>();
-		
+
 		Optional<EmployeesDao> dipendenti = employeesService.SelOnce(idEmployees);
-		
+
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
 		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
-		
+
 		EmployeesDto dto = new EmployeesDto();
 		dto.setDipendentiDato(dipendenti);
-		
-		
+
 		response.setResponse(dto);
-		
+
 		return response;
 	}
-	
 
 	@GetMapping(produces = "application/json")
 	public BaseResponseDto<List<EmployeesDto>> fetchAll() {
@@ -122,9 +118,11 @@ public class EmployeesController {
 		return response;
 
 	}
-	
+
 	@GetMapping(value = "/delete/{idEmployees}", produces = "application/json") // percorso per richiamare il delete
-	public BaseResponseDto<String> deleteEmployeesById(@PathVariable("idEmployees") long idEmployees) {//dichiaro in un long, l'ID da eliminare
+	public BaseResponseDto<String> deleteEmployeesById(@PathVariable("idEmployees") long idEmployees) {// dichiaro in un
+																										// long, l'ID da
+																										// eliminare
 		BaseResponseDto<String> response = new BaseResponseDto<String>();
 		logger.info("****** Cancella il dipendente con id " + idEmployees + "******");
 

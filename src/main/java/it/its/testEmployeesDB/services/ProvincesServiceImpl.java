@@ -34,12 +34,12 @@ public class ProvincesServiceImpl implements ProvincesService {
 
 	@Override
 	public Optional<ProvincesDao> SelOnce(int idProvince) {
-		return provinceRepository.findById((long) idProvince);
+		return provinceRepository.findById(idProvince);
 	}
-	
+
 	@Override
-	public void deleteProvincesById(String id) {
-		provincesRepository.deleteById(id);
-		
+	public void deleteProvincesById(int id) {
+		provinceRepository.deleteById(id);
+
 	}
 }

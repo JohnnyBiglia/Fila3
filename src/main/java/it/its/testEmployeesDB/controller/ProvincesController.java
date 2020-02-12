@@ -7,12 +7,13 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,10 +21,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import it.its.testEmployeesDB.dao.CitiesDao;
 import it.its.testEmployeesDB.dao.ProvincesDao;
 import it.its.testEmployeesDB.dto.BaseResponseDto;
-import it.its.testEmployeesDB.dto.CitiesDto;
 import it.its.testEmployeesDB.dto.ProvincesDto;
 import it.its.testEmployeesDB.services.ProvincesService;
 
@@ -85,7 +84,7 @@ public class ProvincesController {
 		return response;
 
 	}
-	
+
 	@PostMapping("/add")
 	public BaseResponseDto<List<ProvincesDto>> createCity(@RequestBody ProvincesDao province) {
 		BaseResponseDto<List<ProvincesDto>> response = new BaseResponseDto<>();
@@ -101,28 +100,30 @@ public class ProvincesController {
 		return response;
 
 	}
-	
-	@GetMapping(produces = "application/json", value="/fetchOnce/{idProvince}")
-	public BaseResponseDto<ProvincesDto> SelOnce(@PathVariable("idProvince") int idProvince){
+
+	@GetMapping(produces = "application/json", value = "/fetchOnce/{idProvince}")
+	public BaseResponseDto<ProvincesDto> SelOnce(@PathVariable("idProvince") int idProvince) {
 		BaseResponseDto<ProvincesDto> response = new BaseResponseDto<>();
-		
+
 		Optional<ProvincesDao> citta = provincesService.SelOnce(idProvince);
-		
+
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
 		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
-		
+
 		ProvincesDto dto = new ProvincesDto();
 		dto.setProvincesDato(citta);
-		
-		
+
 		response.setResponse(dto);
-		
+
 		return response;
 	}
-	
+
 	@GetMapping(value = "/delete/{idProvinces}", produces = "application/json") // percorso per richiamare il delete
-	public BaseResponseDto<String> deleteProvincesById(@PathVariable("idProvinces") String idProvinces) {//dichiaro in un long, l'ID da eliminare
+	public BaseResponseDto<String> deleteProvincesById(@PathVariable("idProvinces") int idProvinces) {// dichiaro in
+																										// un long,
+																										// l'ID da
+																										// eliminare
 		BaseResponseDto<String> response = new BaseResponseDto<String>();
 		logger.info("****** Cancella la provinces con id " + idProvinces + "******");
 

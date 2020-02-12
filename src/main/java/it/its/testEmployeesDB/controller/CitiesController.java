@@ -7,12 +7,13 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,10 +22,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import it.its.testEmployeesDB.dao.CitiesDao;
-import it.its.testEmployeesDB.dao.CountriesDao;
 import it.its.testEmployeesDB.dto.BaseResponseDto;
 import it.its.testEmployeesDB.dto.CitiesDto;
-import it.its.testEmployeesDB.dto.CountriesDto;
 import it.its.testEmployeesDB.services.CitiesService;
 
 @RestController
@@ -84,6 +83,7 @@ public class CitiesController {
 		return response;
 
 	}
+
 	@PostMapping("/add")
 	public BaseResponseDto<List<CitiesDto>> createCity(@RequestBody CitiesDao city) {
 		BaseResponseDto<List<CitiesDto>> response = new BaseResponseDto<>();
@@ -99,33 +99,33 @@ public class CitiesController {
 		return response;
 
 	}
-	
-	@GetMapping(produces = "application/json", value="/fetchOnce/{idCity}")
-	public BaseResponseDto<CitiesDto> SelOnce(@PathVariable("idCity") int idCity){
+
+	@GetMapping(produces = "application/json", value = "/fetchOnce/{idCity}")
+	public BaseResponseDto<CitiesDto> SelOnce(@PathVariable("idCity") int idCity) {
 		BaseResponseDto<CitiesDto> response = new BaseResponseDto<>();
-		
+
 		Optional<CitiesDao> citta = cittaService.SelOnce(idCity);
-		
+
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
 		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
-		
+
 		CitiesDto dto = new CitiesDto();
 		dto.setCittaDato(citta);
-		
-		
+
 		response.setResponse(dto);
-		
+
 		return response;
 	}
-	
+
 	@GetMapping(value = "/delete/{idCities}", produces = "application/json") // percorso per richiamare il delete
-	public BaseResponseDto<String> deleteCitiesById(@PathVariable("idCities") String idCities) {//dichiaro in un long, l'ID da eliminare
+	public BaseResponseDto<String> deleteCitiesById(@PathVariable("idCities") int idCities) {// dichiaro in un long,
+																								// l'ID da eliminare
 		BaseResponseDto<String> response = new BaseResponseDto<String>();
 		logger.info("****** Cancella la cities con id " + idCities + "******");
 
 		try {// se viene cancellato correttament mi esce un messaggio di Deleted
-			citiesService.deleteCitiesById(idCities);
+			cittaService.deleteCitiesById(idCities);
 			response.setResponse("Deleted");
 		} catch (EmptyResultDataAccessException ex) {// altrimenti non e' successo nulla
 			response.setResponse("Not found");

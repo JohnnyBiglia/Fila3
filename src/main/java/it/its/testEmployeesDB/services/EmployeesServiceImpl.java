@@ -13,7 +13,7 @@ import it.its.testEmployeesDB.repository.EmployeesRepository;
 
 @Service
 @Transactional
-public class EmployeesServiceImpl implements EmployeesService{
+public class EmployeesServiceImpl implements EmployeesService {
 
 	@Autowired
 	EmployeesRepository dipendentiRepository;
@@ -22,14 +22,14 @@ public class EmployeesServiceImpl implements EmployeesService{
 	public List<EmployeesDao> SelTutti() {
 		return dipendentiRepository.findAll();
 	}
-	
+
 	@Override
 	public void deleteEmployeesById(long id) {
-		employeesRepository.deleteById(id); 
+		dipendentiRepository.deleteById(id);
 	}
 
 	@Override
-	public  Optional<EmployeesDao> SelOnce(int id) {
+	public Optional<EmployeesDao> SelOnce(int id) {
 		return dipendentiRepository.findById((long) id);
 	}
 
@@ -40,7 +40,7 @@ public class EmployeesServiceImpl implements EmployeesService{
 
 	@Override
 	public void create(EmployeesDao empl) {
-			dipendentiRepository.saveAndFlush(empl);
-		
+		dipendentiRepository.saveAndFlush(empl);
+
 	}
 }
