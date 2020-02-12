@@ -35,6 +35,6 @@ public class CountriesServiceImpl implements CountriesService {
 
 	@Override
 	public Optional<CountriesDao> SelOnce(String idCountry) {
-		return countriesRepository.findByIso(idCountry);
+		return countriesRepository.findById("'"+idCountry+"'");
 	}
 }

@@ -8,13 +8,13 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "Countries")
+@Table(name = "countries")
 @Data
 public class CountriesDao {
 
 	@Id
 	@Column(name = "iso")
-	private long iso;
+	private String iso;
 
 	@Column(name = "description")
 	private String description;

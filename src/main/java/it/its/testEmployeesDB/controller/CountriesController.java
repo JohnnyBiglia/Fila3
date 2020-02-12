@@ -73,7 +73,7 @@ public class CountriesController {
 		ObjectMapper mapper = new ObjectMapper();
 		CountriesDao country = mapper.readValue(countriesDetails, CountriesDao.class);
 
-		if (country.getIso() != 0) {
+		if (!country.getIso().equals(null) ) {
 			CountriesDao status = countriesService.update(country);
 			response.setResponse(status);
 			response.setMessage("UPDATE_ELABORATO_CORRETTAMENTE");

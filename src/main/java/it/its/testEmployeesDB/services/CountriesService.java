@@ -7,6 +7,7 @@ import it.its.testEmployeesDB.dao.CountriesDao;
 import it.its.testEmployeesDB.dao.EmployeesDao;
 
 public interface CountriesService {
+	
 	public List<CountriesDao> SelTutti();
 
 	public CountriesDao update(CountriesDao country);

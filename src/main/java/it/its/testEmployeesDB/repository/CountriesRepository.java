@@ -7,8 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import it.its.testEmployeesDB.dao.CountriesDao;
 
 
-public interface CountriesRepository extends JpaRepository<CountriesDao, Long>{
+public interface CountriesRepository extends JpaRepository<CountriesDao, String>{
 
-	Optional<CountriesDao> findByIso(String idCountry);
 
 }
