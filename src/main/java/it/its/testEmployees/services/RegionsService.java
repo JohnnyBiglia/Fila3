@@ -8,4 +8,6 @@ public interface RegionsService {
 
 	public List<RegionsDao> SelTutti();
 
+	public void deleteRegionsById(String idRegions);
+
 }

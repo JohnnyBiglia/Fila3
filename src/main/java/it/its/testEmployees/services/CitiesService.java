@@ -7,5 +7,7 @@ import it.its.testEmployees.dao.CitiesDao;
 public interface CitiesService {
 
 	public List<CitiesDao> SelTutti();
+	
+	public void deleteCitiesById(String id);
 
 }

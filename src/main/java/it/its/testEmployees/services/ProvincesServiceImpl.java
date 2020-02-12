@@ -22,4 +22,10 @@ public class ProvincesServiceImpl implements ProvincesService {
 		return provincesRepository.findAll();
 	}
 
+	@Override
+	public void deleteProvincesById(String id) {
+		provincesRepository.deleteById(id);
+		
+	}
+
 }

@@ -22,4 +22,10 @@ public class CitiesServiceImpl implements CitiesService {
 		return citiesRepository.findAll();
 	}
 
+	@Override
+	public void deleteCitiesById(String id) {
+		citiesRepository.deleteById(id);
+		
+	}
+
 }

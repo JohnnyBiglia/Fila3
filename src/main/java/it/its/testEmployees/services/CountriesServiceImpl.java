@@ -22,4 +22,12 @@ public class CountriesServiceImpl implements CountriesService {
 		return countriesRepository.findAll();
 	}
 
+	@Override
+	public void deleteCountriesById(String id) {
+		countriesRepository.deleteById(id);
+		
+	}
+
+	
+
 }

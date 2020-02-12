@@ -1,6 +1,7 @@
 package it.its.testEmployees.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -25,6 +26,11 @@ public class EmployeesServiceImpl implements EmployeesService {
 	@Override
 	public void deleteEmployeesById(long id) {
 		employeesRepository.deleteById(id); 
+	}
+
+	@Override
+	public Optional<EmployeesDao> selOnce(long id) {
+		return employeesRepository.findById(id);
 	}
 
 }

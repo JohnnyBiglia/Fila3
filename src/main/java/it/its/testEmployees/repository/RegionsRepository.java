@@ -8,4 +8,6 @@ import it.its.testEmployees.dao.RegionsDao;
 @Repository
 public interface RegionsRepository extends JpaRepository<RegionsDao, Long> {
 
+	void deleteById(String idRegions);
+
 }

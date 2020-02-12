@@ -23,4 +23,10 @@ public class RegionsServiceImpl implements RegionsService {
 		return regionRepository.findAll();
 	}
 
+	@Override
+	public void deleteRegionsById(String idRegions) {
+		regionRepository.deleteById(idRegions);
+		
+	}
+
 }

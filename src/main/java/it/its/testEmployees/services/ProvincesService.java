@@ -6,4 +6,6 @@ import it.its.testEmployees.dao.ProvincesDao;
 
 public interface ProvincesService {
 	public List<ProvincesDao> SelTutti();
+
+	public void deleteProvincesById(String id);
 }

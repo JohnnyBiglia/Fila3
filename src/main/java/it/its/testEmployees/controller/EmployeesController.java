@@ -2,6 +2,7 @@ package it.its.testEmployees.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,8 +29,8 @@ public class EmployeesController {
 	EmployeesService employeesService;
 
 	@GetMapping(value = "/delete/{idEmployees}", produces = "application/json") // percorso per richiamare il delete
-	public BaseResponseDto<EmployeesDao> deleteEmployeesById(@PathVariable("idEmployees") long idEmployees) {//dichiaro in un long, l'ID da eliminare
-		BaseResponseDto<EmployeesDao> response = new BaseResponseDto<EmployeesDao>();
+	public BaseResponseDto<String> deleteEmployeesById(@PathVariable("idEmployees") long idEmployees) {//dichiaro in un long, l'ID da eliminare
+		BaseResponseDto<String> response = new BaseResponseDto<String>();
 		logger.info("****** Cancella il dipendente con id " + idEmployees + "******");
 
 		try {// se viene cancellato correttament mi esce un messaggio di Deleted
@@ -47,6 +48,28 @@ public class EmployeesController {
 		return response;// ritorno la risposta
 
 	}
+	
+	
+	@GetMapping(value = "/fetchOnce/{idEmployees}", produces = "application/json") // percorso per richiamare il delete
+	public BaseResponseDto<EmployeesDao> selOnce(@PathVariable("idEmployees") long idEmployees) {//dichiaro in un long, l'ID da eliminare
+		BaseResponseDto<EmployeesDao> response = new BaseResponseDto<>();
+		
+		Optional<EmployeesDao> employees = employeesService.selOnce(idEmployees);
+		
+		response.setTimestamp(new Date());
+		response.setStatus(HttpStatus.OK.value());
+		response.setMessage("Servizio_elaborato_correttamente");
+		
+		EmployeesDto dto = new EmployeesDto();
+		dto.setEmployeesDato(employees);
+		
+		response.setResponse(dto);
+
+		return response;// ritorno la risposta
+
+	}
+	
+	
 
 	@GetMapping(produces = "application/json")
 	public BaseResponseDto<List<EmployeesDto>> fetchAll() {

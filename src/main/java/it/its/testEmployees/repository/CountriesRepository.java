@@ -8,4 +8,8 @@ import it.its.testEmployees.dao.CountriesDao;
 @Repository
 public interface CountriesRepository extends JpaRepository<CountriesDao, Long> {
 
+	void deleteById(String id);
+
+	
+
 }
