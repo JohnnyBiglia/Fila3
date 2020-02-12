@@ -21,7 +21,7 @@ import it.its.testEmployeesDB.dto.EmployeesDto;
 import it.its.testEmployeesDB.services.CountriesService;
 
 @RestController
-@RequestMapping(value = "api/Countries")
+@RequestMapping(value = "api/countries")
 public class CountriesController {
 
 	private static final Logger logger = LoggerFactory.getLogger(CountriesController.class);
