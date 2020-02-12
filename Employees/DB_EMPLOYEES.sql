@@ -51,8 +51,7 @@ CREATE TABLE `users` (
   `password` varchar(60) DEFAULT NULL,
   `ruolo` varchar(30) DEFAULT NULL,
   `config` longtext,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`id_city`) REFERENCES `cities` (`id`)
+  PRIMARY KEY (`id`)
 );
 
 
