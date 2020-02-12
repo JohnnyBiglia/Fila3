@@ -12,5 +12,5 @@ public interface ProvincesService {
 
 	public void create(ProvincesDao province);
 
-	public Optional<ProvincesDao> SelOnce(long idProvince);
+	public Optional<ProvincesDao> SelOnce(int idProvince);
 }

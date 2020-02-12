@@ -12,5 +12,5 @@ public interface RegionsService {
 	public RegionsDao update(RegionsDao region);
 
 	public void create(RegionsDao region);
-	public Optional<RegionsDao> SelOnce(long idRegion);
+	public Optional<RegionsDao> SelOnce(int idRegion);
 }

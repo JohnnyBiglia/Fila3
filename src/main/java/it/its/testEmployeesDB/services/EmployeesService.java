@@ -11,5 +11,5 @@ public interface EmployeesService {
 	public EmployeesDao update(EmployeesDao employeeDetails);
 
 	public void create(EmployeesDao empl);
-	public Optional<EmployeesDao> SelOnce(long idEmployees);
+	public Optional<EmployeesDao> SelOnce(int idEmployees);
 }

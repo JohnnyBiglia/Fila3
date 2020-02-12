@@ -45,6 +45,17 @@ CREATE TABLE `employees` (
   FOREIGN KEY (`id_city`) REFERENCES `cities` (`id`)
 );
 
+CREATE TABLE `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) DEFAULT NULL,
+  `password` varchar(60) DEFAULT NULL,
+  `ruolo` varchar(30) DEFAULT NULL,
+  `config` longtext,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`id_city`) REFERENCES `cities` (`id`)
+);
+
+
 use Employees_management;
 
 insert into countries values ("ITA","Italia");
@@ -67,6 +78,8 @@ insert into provinces values (null,"Pordenone","2");
 insert into provinces values (null,"Triestre","2");
 insert into cities values(null,"Padova",1);
 insert into cities values (null,"Belluno",1);
+
+insert into users values(null,"admin","admin","admin","{'chiave1':'valore1'}");
 
 
 insert into employees values(null,"Mirco", "Pastorino","PSTMRC85J8564D",2,"Via Brombeis 15","M","mirco_pastorino@belbel.com", "3986547852" );

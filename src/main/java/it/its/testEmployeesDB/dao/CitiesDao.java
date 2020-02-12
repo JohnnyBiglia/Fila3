@@ -12,12 +12,8 @@ import lombok.Data;
 @Data
 public class CitiesDao {
 	@Id
-<<<<<<< HEAD
 	@Column(name = "id")
-=======
-	@Column(name = "Id")
->>>>>>> refs/heads/fetchOnce
-	private long id;
+	private int id;
 	
 	@Column(name = "description")
 	private String description;

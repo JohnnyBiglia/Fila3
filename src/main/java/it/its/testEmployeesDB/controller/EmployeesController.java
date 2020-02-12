@@ -37,7 +37,7 @@ public class EmployeesController {
 	EmployeesService employeesService;
 	
 	@GetMapping(produces = "application/json", value="/fetchOnce/employee/{idEmployees}")
-	public BaseResponseDto<EmployeesDto> SelOnce(@PathVariable("idEmployees") long idEmployees){
+	public BaseResponseDto<EmployeesDto> SelOnce(@PathVariable("idEmployees") int idEmployees){
 		BaseResponseDto<EmployeesDto> response = new BaseResponseDto<>();
 		
 		Optional<EmployeesDao> dipendenti = dipendentiService.SelOnce(idEmployees);

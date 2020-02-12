@@ -12,5 +12,5 @@ public interface CitiesService {
 
 	public void create(CitiesDao city);
 
-	public Optional<CitiesDao> SelOnce(long idCity);
+	public Optional<CitiesDao> SelOnce(int idCity);
 }

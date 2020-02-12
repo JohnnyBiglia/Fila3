@@ -102,7 +102,7 @@ public class ProvincesController {
 	}
 	
 	@GetMapping(produces = "application/json", value="/fetchOnce/{idProvince}")
-	public BaseResponseDto<ProvincesDto> SelOnce(@PathVariable("idProvince") long idProvince){
+	public BaseResponseDto<ProvincesDto> SelOnce(@PathVariable("idProvince") int idProvince){
 		BaseResponseDto<ProvincesDto> response = new BaseResponseDto<>();
 		
 		Optional<ProvincesDao> citta = provincesService.SelOnce(idProvince);

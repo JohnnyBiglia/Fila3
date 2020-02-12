@@ -13,13 +13,9 @@ import lombok.Data;
 public class EmployeesDao {
 
 	@Id
-<<<<<<< HEAD
 	@Column(name = "id")
 	private int id;
-=======
-	@Column(name = "Id")
-	private long id;
->>>>>>> refs/heads/fetchOnce
+
 	
 	@Column(name = "name")
 	private String name;
