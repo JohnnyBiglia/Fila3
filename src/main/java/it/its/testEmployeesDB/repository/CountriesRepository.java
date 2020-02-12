@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 import it.its.testEmployeesDB.dao.CountriesDao;
 
 @Repository
-public interface CountriesRepository extends JpaRepository<CountriesDao, Long> {
+public interface CountriesRepository extends JpaRepository<CountriesDao, String> {
 
-	void deleteById(String id);
+
 
 	
 

@@ -13,7 +13,7 @@ import lombok.Data;
 public class CountriesDao {
 
 	@Id
-	@Column(name = "ISO")
+	@Column(name = "iso")
 	private String iso;
 
 	@Column(name = "description")
