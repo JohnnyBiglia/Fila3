@@ -19,4 +19,7 @@ public class RegionsDao {
 	
 	@Column(name = "description")
 	private String description;
+	
+	@Column(name = "iso_country")
+	private String isoCountry;
 }

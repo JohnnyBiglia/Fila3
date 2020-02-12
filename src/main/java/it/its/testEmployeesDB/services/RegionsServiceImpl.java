@@ -37,4 +37,10 @@ public class RegionsServiceImpl implements RegionsService {
 		// TODO Auto-generated method stub
 		return regioniRepository.findById((long) idRegion);
 	}
+	
+	@Override
+	public void deleteRegionsById(String idRegions) {
+		regionRepository.deleteById(idRegions);
+		
+	}
 }

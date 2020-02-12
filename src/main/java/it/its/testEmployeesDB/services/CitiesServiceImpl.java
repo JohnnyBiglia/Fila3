@@ -1,6 +1,7 @@
 package it.its.testEmployeesDB.services;
 
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -36,4 +37,33 @@ public class CitiesServiceImpl implements CitiesService {
 		// TODO Auto-generated method stub
 		return cittaRepository.findById((long) idCity);
 	}
+=======
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import it.its.testEmployeesDB.dao.CitiesDao;
+import it.its.testEmployeesDB.repository.CitiesRepository;
+
+@Service
+@Transactional
+public class CitiesServiceImpl implements CitiesService {
+
+	@Autowired
+	CitiesRepository citiesRepository;
+
+	@Override
+	public List<CitiesDao> SelTutti() {
+		return citiesRepository.findAll();
+	}
+
+	@Override
+	public void deleteCitiesById(String id) {
+		citiesRepository.deleteById(id);
+		
+	}
+
+>>>>>>> refs/remotes/origin/test
 }

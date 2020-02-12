@@ -11,6 +11,6 @@ import it.its.testEmployeesDB.dao.CitiesDao;
 @Repository
 public interface CitiesRepository extends JpaRepository<CitiesDao, Long> {
 
-	void save(@Valid User city);
+	
 	
 }

@@ -118,4 +118,25 @@ public class CountriesController {
 		
 		return response;
 	}
+	
+	@GetMapping(value = "/delete/{isoCountries}", produces = "application/json") // percorso per richiamare il delete
+	public BaseResponseDto<String> deleteCountriesById(@PathVariable("isoCountries") String isoCountries) {//dichiaro in un long, l'ID da eliminare
+		BaseResponseDto<String> response = new BaseResponseDto<String>();
+		logger.info("****** Cancella la countries con id " + isoCountries + "******");
+
+		try {// se viene cancellato correttament mi esce un messaggio di Deleted
+			countriesService.deleteCountriesById(isoCountries);
+			response.setResponse("Deleted");
+		} catch (EmptyResultDataAccessException ex) {// altrimenti non e' successo nulla
+			response.setResponse("Not found");
+		}
+		// setto la risposta assegnandole una nuova data, un nuovo valore ed un
+		// messaggio finale
+		response.setTimestamp(new Date());
+		response.setStatus(HttpStatus.OK.value());
+		response.setMessage("Service_was_successful");
+
+		return response;// ritorno la risposta
+
+	}
 }

@@ -13,4 +13,6 @@ public interface RegionsService {
 
 	public void create(RegionsDao region);
 	public Optional<RegionsDao> SelOnce(int idRegion);
+	
+	public void deleteRegionsById(String idRegions);
 }

@@ -27,6 +27,12 @@ public class CountriesServiceImpl implements CountriesService {
 	public CountriesDao update(CountriesDao country) {
 		return countriesRepository.save(country);
 	}
+	
+	@Override
+	public void deleteCountriesById(String id) {
+		countriesRepository.deleteById(id);
+		
+	}
 
 	@Override
 	public void create(CountriesDao country) {

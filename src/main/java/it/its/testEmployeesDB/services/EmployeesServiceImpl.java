@@ -22,6 +22,11 @@ public class EmployeesServiceImpl implements EmployeesService{
 	public List<EmployeesDao> SelTutti() {
 		return dipendentiRepository.findAll();
 	}
+	
+	@Override
+	public void deleteEmployeesById(long id) {
+		employeesRepository.deleteById(id); 
+	}
 
 	@Override
 	public  Optional<EmployeesDao> SelOnce(int id) {

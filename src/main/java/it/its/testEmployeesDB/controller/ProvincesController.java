@@ -120,4 +120,25 @@ public class ProvincesController {
 		
 		return response;
 	}
+	
+	@GetMapping(value = "/delete/{idProvinces}", produces = "application/json") // percorso per richiamare il delete
+	public BaseResponseDto<String> deleteProvincesById(@PathVariable("idProvinces") String idProvinces) {//dichiaro in un long, l'ID da eliminare
+		BaseResponseDto<String> response = new BaseResponseDto<String>();
+		logger.info("****** Cancella la provinces con id " + idProvinces + "******");
+
+		try {// se viene cancellato correttament mi esce un messaggio di Deleted
+			provincesService.deleteProvincesById(idProvinces);
+			response.setResponse("Deleted");
+		} catch (EmptyResultDataAccessException ex) {// altrimenti non e' successo nulla
+			response.setResponse("Not found");
+		}
+		// setto la risposta assegnandole una nuova data, un nuovo valore ed un
+		// messaggio finale
+		response.setTimestamp(new Date());
+		response.setStatus(HttpStatus.OK.value());
+		response.setMessage("Service_was_successful");
+
+		return response;// ritorno la risposta
+
+	}
 }

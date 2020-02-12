@@ -18,4 +18,8 @@ public class CountriesDao {
 
 	@Column(name = "description")
 	private String description;
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/test
 }

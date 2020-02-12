@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployeesDto {
+<<<<<<< HEAD
 	private List<EmployeesDao> dipendentiData;
 	private Optional<EmployeesDao> dipendentiDato;
 
@@ -22,4 +23,10 @@ public class EmployeesDto {
 
 		
 	
+=======
+
+	private List<EmployeesDao> employeesData;
+
+	private Optional<EmployeesDao> employeesDato;
+>>>>>>> refs/remotes/origin/test
 }

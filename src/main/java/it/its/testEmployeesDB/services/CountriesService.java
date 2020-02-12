@@ -15,4 +15,6 @@ public interface CountriesService {
 	public void create(CountriesDao country);
 
 	public Optional<CountriesDao> SelOnce(String idCountry);
+	
+	public void deleteCountriesById(String isoCountries);
 }

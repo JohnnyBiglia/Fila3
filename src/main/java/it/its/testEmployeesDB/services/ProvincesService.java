@@ -14,4 +14,6 @@ public interface ProvincesService {
 	public void create(ProvincesDao province);
 
 	public Optional<ProvincesDao> SelOnce(int idProvince);
+	
+	public void deleteProvincesById(String id);
 }
