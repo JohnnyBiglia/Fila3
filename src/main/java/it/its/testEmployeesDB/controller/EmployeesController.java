@@ -2,6 +2,7 @@ package it.its.testEmployeesDB.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +41,7 @@ public class EmployeesController {
 	public BaseResponseDto<EmployeesDto> SelOnce(@PathVariable("idEmployees") int idEmployees){
 		BaseResponseDto<EmployeesDto> response = new BaseResponseDto<>();
 		
-		Optional<EmployeesDao> dipendenti = dipendentiService.SelOnce(idEmployees);
+		Optional<EmployeesDao> dipendenti = employeesService.SelOnce(idEmployees);
 		
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());

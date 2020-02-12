@@ -34,7 +34,6 @@ public class ProvincesServiceImpl implements ProvincesService {
 
 	@Override
 	public Optional<ProvincesDao> SelOnce(int idProvince) {
-		// TODO Auto-generated method stub
-		return provincieRepository.findById((long) idProvince);
+		return provinceRepository.findById((long) idProvince);
 	}
 }
