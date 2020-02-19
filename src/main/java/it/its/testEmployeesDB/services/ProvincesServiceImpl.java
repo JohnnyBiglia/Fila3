@@ -34,7 +34,8 @@ public class ProvincesServiceImpl implements ProvincesService{
 		}
 		return dto;
 	}
-	public void deleteProvincesById(long id) {
+	public void deleteProvincesById(int id) {
 		provincieRepository.deleteById(id);
 	}
+	
 }

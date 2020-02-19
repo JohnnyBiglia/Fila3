@@ -32,9 +32,9 @@ public class CitiesServiceImpl implements CitiesService{
 		return dto;
 	}
 
+
 	@Override
-	public void deleteCitiesById(long id) {
-		cittaRepository.deleteById(id);
-		
+	public void deleteCitiesById(int id) {
+		cittaRepository.deleteById(id);		
 	}
 }

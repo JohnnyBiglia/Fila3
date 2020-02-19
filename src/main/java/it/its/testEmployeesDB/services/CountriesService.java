@@ -7,5 +7,5 @@ import it.its.testEmployeesDB.dto.CountriesDto;
 
 public interface CountriesService {
 	public List<CountriesDto> SelTutti();
-	public void deleteCountriesById(long iso);
+	public void deleteCountriesById(String iso);
 }

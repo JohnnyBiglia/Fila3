@@ -57,7 +57,7 @@ public class EmployeesController {
 		return response;
 	}
 	@GetMapping(value = "/delete/{idEmployees}", produces = "application/json") // percorso per richiamare il delete
-	public BaseResponseDto<EmployeesDao> deleteEmployeesById(@PathVariable("idEmployees") long idEmployees) {//dichiaro in un long, l'ID da eliminare
+	public BaseResponseDto<EmployeesDao> deleteEmployeesById(@PathVariable("idEmployees") int idEmployees) {//dichiaro in un long, l'ID da eliminare
 		BaseResponseDto<EmployeesDao> response = new BaseResponseDto<EmployeesDao>();
 		logger.info("****** Cancella il dipendente con id " + idEmployees + "******");
 

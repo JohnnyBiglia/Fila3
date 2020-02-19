@@ -8,20 +8,20 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "Employees")
+@Table(name = "employees")
 @Data
 public class EmployeesDao{
 
 	@Id
-	@Column(name = "Id")
-	private long id;
+	@Column(name = "id")
+	private int id;
 	
-	@Column(name = "Name")
+	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "Surname")
+	@Column(name = "surname")
 	private String surname;
 	
-	@Column(name = "Email")
+	@Column(name = "email")
 	private String email;
 }

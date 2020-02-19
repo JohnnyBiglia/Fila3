@@ -28,19 +28,16 @@ public class CountriesServiceImpl implements CountriesService{
 			temp.setDescription(d.getDescription());
 			
 			dto.add(temp);
-			
-			
 
 	}
 	return dto;	
-		
-		
-		
+
 	}
 
+
 	@Override
-	public void deleteCountriesById(long iso) {
-		countriesRepository.deleteById(iso);
+	public void deleteCountriesById(String iso) {
+		// TODO Auto-generated method stub
 		
 	}
 

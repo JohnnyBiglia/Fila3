@@ -17,10 +17,10 @@ import lombok.Setter;
 @Setter
 public class RegionsDto {
 	@Id
-	@Column(name = "Id")
-	private String id;
+	@Column(name = "id")
+	private int id;
 	
-	@Column(name = "Description")
+	@Column(name = "description")
 	private String description;
 
 }

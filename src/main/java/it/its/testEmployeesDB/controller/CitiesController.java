@@ -18,7 +18,7 @@ import it.its.testEmployeesDB.services.CitiesService;
 
 
 @RestController
-@RequestMapping(value = "api/Cities")
+@RequestMapping(value = "api/cities")
 public class CitiesController {
 	private static final Logger logger = LoggerFactory.getLogger(CitiesController.class);
 

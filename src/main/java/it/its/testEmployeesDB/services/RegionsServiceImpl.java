@@ -34,8 +34,10 @@ public class RegionsServiceImpl implements RegionsService{
 	}
 
 	@Override
-	public void deleteRegionsById(long id) {
+	public void deleteRegionsById(int id) {
 		regioniRepository.deleteById(id);
 		
 	}
+
+	
 }

@@ -7,5 +7,5 @@ import it.its.testEmployeesDB.dto.RegionsDto;
 
 public interface RegionsService {
 	public List<RegionsDto> SelTutti();
-	public void deleteRegionsById(long id);
+	public void deleteRegionsById(int id);
 }

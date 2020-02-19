@@ -7,5 +7,5 @@ import it.its.testEmployeesDB.dto.EmployeesDto;
 
 public interface EmployeesService {
 	public List<EmployeesDto> SelTutti();
-	public void deleteEmployeesById(long id);
+	public void deleteEmployeesById(int id);
 }

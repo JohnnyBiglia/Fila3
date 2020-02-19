@@ -7,14 +7,14 @@ import javax.persistence.Table;
 
 import lombok.Data;
 @Entity
-@Table(name = "Countries")
+@Table(name = "countries")
 @Data
 public class CountriesDao {
 	
 	@Id
-	@Column(name = "ISO")
+	@Column(name = "iso")
 	private String iso;
 	
-	@Column(name = "Description")
+	@Column(name = "description")
 	private String description;
 }

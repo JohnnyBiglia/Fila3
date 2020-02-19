@@ -17,7 +17,7 @@ import it.its.testEmployeesDB.dto.RegionsDto;
 import it.its.testEmployeesDB.services.RegionsService;
 
 @RestController
-@RequestMapping(value = "api/Regions")
+@RequestMapping(value = "api/regions")
 public class RegionsController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RegionsController.class);

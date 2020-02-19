@@ -14,7 +14,7 @@ import it.its.testEmployeesDB.repository.EmployeesRepository;
 
 @Service
 @Transactional
-public class DipendentiServiceImpl implements EmployeesService{
+public class EmployeesServiceImpl implements EmployeesService{
 
 	@Autowired
 	EmployeesRepository employeesRepository;
@@ -37,26 +37,10 @@ public class DipendentiServiceImpl implements EmployeesService{
 		return dto;
 	}
 	
-	public void deleteEmployeesById(long id) {
+	public void deleteEmployeesById(int id) {
 		employeesRepository.deleteById(id);
 	}
-	
-	
-//	public ArrayList<EmployeesDto> selTutti(){
-//		ArrayList<EmployeesDto>dto=new ArrayList<EmployeesDto>();
-//		List<EmployeesDao>dao=this.SelTutti();
-//		
-//		for(EmployeesDao d:dao) {
-//			
-//			EmployeesDto temp=new EmployeesDto();
-//			temp.setId(Long.parseLong(d.getId()));
-//			temp.setName(d.getName());
-//			temp.setSurname(d.getSurname());
-//			
-//			dto.add(temp);
-//			
-//			
-//		}
-//		return dto;
-//	}
+
+
+
 }
