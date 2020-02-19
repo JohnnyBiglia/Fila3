@@ -32,7 +32,7 @@ public class RegionsController {
 		
 		logger.info("****** Otteniamo le promozioni *******");
 
-		List<RegionsDao> regions = regionsService.SelTutti();
+		List<RegionsDto> regions = regionsService.SelTutti();
 		
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
@@ -45,10 +45,10 @@ public class RegionsController {
 		
 		logger.info("Numero dei record: " + regions.size());
 		
-		RegionsDto dto = new RegionsDto();
-		dto.setRegionsData(regions);
+//		RegionsDto dto = new RegionsDto();
+//		dto.setRegionsData(regions);
 		
-		response.setResponse(dto);
+		response.setResponse(regions);
 		
 		return response;
 	}

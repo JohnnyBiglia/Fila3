@@ -32,7 +32,7 @@ public class CountriesController {
 		
 		logger.info("****** Otteniamo le promozioni *******");
 
-		List<CountriesDao> countries = countriesService.SelTutti();
+		List<CountriesDto> countries = countriesService.SelTutti();
 		
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
@@ -45,10 +45,10 @@ public class CountriesController {
 		
 		logger.info("Numero dei record: " + countries.size());
 		
-		CountriesDto dto = new CountriesDto();
-		dto.setCountriesData(countries);
+//		CountriesDto dto = new CountriesDto();
+//		dto.setCountriesData(countries);
 		
-		response.setResponse(dto);
+		response.setResponse(countries);
 		
 		return response;
 	}

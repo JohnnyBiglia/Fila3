@@ -1,5 +1,6 @@
 package it.its.testEmployeesDB.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.its.testEmployeesDB.dao.RegionsDao;
+import it.its.testEmployeesDB.dto.RegionsDto;
 import it.its.testEmployeesDB.repository.RegionsRepository;
 
 
@@ -18,7 +20,22 @@ public class RegionsServiceImpl implements RegionsService{
 	RegionsRepository regioniRepository;
 
 	@Override
-	public List<RegionsDao> SelTutti() {
-		return regioniRepository.findAll();
+	public List<RegionsDto> SelTutti() {
+		List<RegionsDao>dao=regioniRepository.findAll();
+		ArrayList<RegionsDto>dto=new ArrayList<RegionsDto>();
+		for (RegionsDao r : dao) {
+			RegionsDto temp=new RegionsDto();
+			temp.setId(r.getId());
+			temp.setDescription(r.getDescription());
+			
+			dto.add(temp);
+		}
+		return dto;
+	}
+
+	@Override
+	public void deleteRegionsById(long id) {
+		regioniRepository.deleteById(id);
+		
 	}
 }

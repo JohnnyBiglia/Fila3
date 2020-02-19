@@ -32,7 +32,7 @@ public class CitiesController {
 		
 		logger.info("****** Otteniamo le promozioni *******");
 
-		List<CitiesDao> citta = cittaService.SelTutti();
+		List<CitiesDto> citta = cittaService.SelTutti();
 		
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
@@ -45,10 +45,10 @@ public class CitiesController {
 		
 		logger.info("Numero dei record: " + citta.size());
 		
-		CitiesDto dto = new CitiesDto();
-		dto.setCittaData(citta);
+//		CitiesDto dto = new CitiesDto();
+//		dto.setCittaData(citta);
 		
-		response.setResponse(dto);
+		response.setResponse(citta);
 		
 		return response;
 	}

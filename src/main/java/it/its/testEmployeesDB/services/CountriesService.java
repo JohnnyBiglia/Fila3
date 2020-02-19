@@ -3,7 +3,9 @@ package it.its.testEmployeesDB.services;
 import java.util.List;
 
 import it.its.testEmployeesDB.dao.CountriesDao;
+import it.its.testEmployeesDB.dto.CountriesDto;
 
 public interface CountriesService {
-	public List<CountriesDao> SelTutti();
+	public List<CountriesDto> SelTutti();
+	public void deleteCountriesById(long iso);
 }

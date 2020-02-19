@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import lombok.Data;
 @Entity
 @Table(name = "Cities")
-@Data
+
 public class CitiesDao {
 	@Id
 	@Column(name = "Id")

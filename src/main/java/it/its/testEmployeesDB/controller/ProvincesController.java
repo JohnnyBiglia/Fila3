@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.its.testEmployeesDB.dao.ProvincesDao;
 import it.its.testEmployeesDB.dto.BaseResponseDto;
 import it.its.testEmployeesDB.dto.ProvincesDto;
 import it.its.testEmployeesDB.services.ProvincesService;
@@ -32,7 +31,7 @@ public class ProvincesController {
 		
 		logger.info("****** Otteniamo le promozioni *******");
 
-		List<ProvincesDao> provinces = provincesService.SelTutti();
+		List<ProvincesDto> provinces = provincesService.SelTutti();
 		
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
@@ -45,10 +44,10 @@ public class ProvincesController {
 		
 		logger.info("Numero dei record: " + provinces.size());
 		
-		ProvincesDto dto = new ProvincesDto();
-		dto.setProvincesData(provinces);
+//		ProvincesDto dto = new ProvincesDto();
+//		dto.setProvincesData(provinces);
 		
-		response.setResponse(dto);
+		response.setResponse(provinces);
 		
 		return response;
 	}
