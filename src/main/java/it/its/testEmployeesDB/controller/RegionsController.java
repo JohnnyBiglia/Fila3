@@ -42,8 +42,13 @@ public class RegionsController {
 
 		logger.info("****** Otteniamo le promozioni *******");
 
+<<<<<<< HEAD
 		List<RegionsDao> regions = regionsService.SelTutti();
 
+=======
+		List<RegionsDto> regions = regionsService.SelTutti();
+		
+>>>>>>> refs/remotes/origin/updated_dao-dto
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
 		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
@@ -54,12 +59,21 @@ public class RegionsController {
 		}
 
 		logger.info("Numero dei record: " + regions.size());
+<<<<<<< HEAD
 
 		RegionsDto dto = new RegionsDto();
 		dto.setRegionsData(regions);
 
 		response.setResponse(dto);
 
+=======
+		
+//		RegionsDto dto = new RegionsDto();
+//		dto.setRegionsData(regions);
+		
+		response.setResponse(regions);
+		
+>>>>>>> refs/remotes/origin/updated_dao-dto
 		return response;
 	}
 

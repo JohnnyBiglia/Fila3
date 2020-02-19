@@ -1,5 +1,6 @@
 package it.its.testEmployeesDB.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +27,15 @@ import it.its.testEmployeesDB.dto.BaseResponseDto;
 import it.its.testEmployeesDB.dto.EmployeesDto;
 import it.its.testEmployeesDB.services.EmployeesService;
 
+<<<<<<< HEAD
 //@CrossOrigin(origins = "http://localhost:4200")
+=======
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+>>>>>>> refs/remotes/origin/updated_dao-dto
 @RestController
 @RequestMapping(value = "api/employees")
 public class EmployeesController {
@@ -39,8 +48,13 @@ public class EmployeesController {
 	public BaseResponseDto<EmployeesDto> SelOnce(@PathVariable("idEmployees") int idEmployees) {
 		BaseResponseDto<EmployeesDto> response = new BaseResponseDto<>();
 
+<<<<<<< HEAD
 		Optional<EmployeesDao> dipendenti = employeesService.SelOnce(idEmployees);
 
+=======
+		List<EmployeesDto> dipendenti = dipendentiService.SelTutti();
+		
+>>>>>>> refs/remotes/origin/updated_dao-dto
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
 		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
@@ -72,14 +86,25 @@ public class EmployeesController {
 		}
 
 		logger.info("Numero dei record: " + dipendenti.size());
+<<<<<<< HEAD
 
 		EmployeesDto dto = new EmployeesDto();
 		dto.setDipendentiData(dipendenti);
 
 		response.setResponse(dto);
 
+=======
+		
+		//ArrayList<EmployeesDto> dto = new ArrayList<EmployeesDto>();
+		//dto=dipendentiService.SelTutti();
+		
+		
+		response.setResponse(dipendenti);
+		
+>>>>>>> refs/remotes/origin/updated_dao-dto
 		return response;
 	}
+<<<<<<< HEAD
 
 	@PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
 	public BaseResponseDto<EmployeesDao> update(@RequestBody String employeeDetails)
@@ -142,4 +167,25 @@ public class EmployeesController {
 
 	}
 
+=======
+	@GetMapping(value = "/delete/{idEmployees}", produces = "application/json") // percorso per richiamare il delete
+	public BaseResponseDto<EmployeesDao> deleteEmployeesById(@PathVariable("idEmployees") int idEmployees) {//dichiaro in un long, l'ID da eliminare
+		BaseResponseDto<EmployeesDao> response = new BaseResponseDto<EmployeesDao>();
+		logger.info("****** Cancella il dipendente con id " + idEmployees + "******");
+
+		try {// se viene cancellato correttament mi esce un messaggio di Deleted
+			dipendentiService.deleteEmployeesById(idEmployees);
+			response.setResponse("Deleted");
+		} catch (EmptyResultDataAccessException ex) {// altrimenti non e' successo nulla
+			response.setResponse("Not found");
+		}
+		// setto la risposta assegnandole una nuova data, un nuovo valore ed un
+		// messaggio finale
+		response.setTimestamp(new Date());
+		response.setStatus(HttpStatus.OK.value());
+		response.setMessage("Service_was_successful");
+
+		return response;// ritorno la risposta
+	}
+>>>>>>> refs/remotes/origin/updated_dao-dto
 }

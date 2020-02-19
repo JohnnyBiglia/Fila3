@@ -17,11 +17,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import it.its.testEmployeesDB.dao.ProvincesDao;
+=======
+>>>>>>> refs/remotes/origin/updated_dao-dto
 import it.its.testEmployeesDB.dto.BaseResponseDto;
 import it.its.testEmployeesDB.dto.ProvincesDto;
 import it.its.testEmployeesDB.services.ProvincesService;
@@ -42,8 +45,13 @@ public class ProvincesController {
 
 		logger.info("****** Otteniamo le promozioni *******");
 
+<<<<<<< HEAD
 		List<ProvincesDao> provinces = provincesService.SelTutti();
 
+=======
+		List<ProvincesDto> provinces = provincesService.SelTutti();
+		
+>>>>>>> refs/remotes/origin/updated_dao-dto
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
 		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
@@ -54,12 +62,21 @@ public class ProvincesController {
 		}
 
 		logger.info("Numero dei record: " + provinces.size());
+<<<<<<< HEAD
 
 		ProvincesDto dto = new ProvincesDto();
 		dto.setProvincesData(provinces);
 
 		response.setResponse(dto);
 
+=======
+		
+//		ProvincesDto dto = new ProvincesDto();
+//		dto.setProvincesData(provinces);
+		
+		response.setResponse(provinces);
+		
+>>>>>>> refs/remotes/origin/updated_dao-dto
 		return response;
 	}
 

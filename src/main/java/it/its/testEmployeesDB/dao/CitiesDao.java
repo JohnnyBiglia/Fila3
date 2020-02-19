@@ -14,7 +14,11 @@ public class CitiesDao {
 	@Id
 	@Column(name = "id")
 	private int id;
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> refs/remotes/origin/updated_dao-dto
 	@Column(name = "description")
 	private String description;
 

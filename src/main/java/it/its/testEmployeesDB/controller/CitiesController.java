@@ -41,8 +41,13 @@ public class CitiesController {
 
 		logger.info("****** Otteniamo le promozioni *******");
 
+<<<<<<< HEAD
 		List<CitiesDao> citta = cittaService.SelTutti();
 
+=======
+		List<CitiesDto> citta = cittaService.SelTutti();
+		
+>>>>>>> refs/remotes/origin/updated_dao-dto
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
 		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
@@ -53,12 +58,21 @@ public class CitiesController {
 		}
 
 		logger.info("Numero dei record: " + citta.size());
+<<<<<<< HEAD
 
 		CitiesDto dto = new CitiesDto();
 		dto.setCittaData(citta);
 
 		response.setResponse(dto);
 
+=======
+		
+//		CitiesDto dto = new CitiesDto();
+//		dto.setCittaData(citta);
+		
+		response.setResponse(citta);
+		
+>>>>>>> refs/remotes/origin/updated_dao-dto
 		return response;
 	}
 
