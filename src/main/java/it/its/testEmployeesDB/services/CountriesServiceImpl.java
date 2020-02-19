@@ -1,6 +1,5 @@
 package it.its.testEmployeesDB.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,11 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.its.testEmployeesDB.dao.CountriesDao;
-<<<<<<< HEAD
 import it.its.testEmployeesDB.dao.EmployeesDao;
-=======
-import it.its.testEmployeesDB.dto.CountriesDto;
->>>>>>> refs/remotes/origin/updated_dao-dto
 import it.its.testEmployeesDB.repository.CountriesRepository;
 
 @Service
@@ -35,7 +30,16 @@ public class CountriesServiceImpl implements CountriesService {
 			dto.add(temp);
 
 	}
-<<<<<<< HEAD
+	return dto;	
+
+	}
+
+
+	@Override
+	public void deleteCountriesById(String iso) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public CountriesDao update(CountriesDao country) {
@@ -57,18 +61,4 @@ public class CountriesServiceImpl implements CountriesService {
 	public Optional<CountriesDao> SelOnce(String idCountry) {
 		return countriesRepository.findById("'"+idCountry+"'");
 	}
-=======
-	return dto;	
-
-	}
-
-
-	@Override
-	public void deleteCountriesById(String iso) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
->>>>>>> refs/remotes/origin/updated_dao-dto
 }

@@ -10,21 +10,16 @@ import lombok.Data;
 @Entity
 <<<<<<< HEAD
 
-@Table(name = "Provinces")
-=======
 @Table(name = "provinces")
->>>>>>> refs/remotes/origin/updated_dao-dto
+@Table(name = "provinces")
+
 @Data
 public class ProvincesDao {
 
 	@Id
 	@Column(name = "id")
 	private int id;
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> refs/remotes/origin/updated_dao-dto
 	@Column(name = "description")
 	private String description;
 

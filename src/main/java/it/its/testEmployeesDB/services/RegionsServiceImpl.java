@@ -1,6 +1,5 @@
 package it.its.testEmployeesDB.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.its.testEmployeesDB.dao.RegionsDao;
-import it.its.testEmployeesDB.dto.RegionsDto;
 import it.its.testEmployeesDB.repository.RegionsRepository;
 
 @Service
@@ -34,7 +32,12 @@ public class RegionsServiceImpl implements RegionsService {
 	}
 
 	@Override
-<<<<<<< HEAD
+	public void deleteRegionsById(int id) {
+		regioniRepository.deleteById(id);
+		
+	}
+
+	@Override
 	public RegionsDao update(RegionsDao region) {
 		return regioniRepository.save(region);
 	}
@@ -55,12 +58,4 @@ public class RegionsServiceImpl implements RegionsService {
 		regioniRepository.deleteById(idRegions);
 
 	}
-=======
-	public void deleteRegionsById(int id) {
-		regioniRepository.deleteById(id);
-		
-	}
-
-	
->>>>>>> refs/remotes/origin/updated_dao-dto
 }

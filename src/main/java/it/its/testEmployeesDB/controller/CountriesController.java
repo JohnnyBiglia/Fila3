@@ -42,13 +42,8 @@ public class CountriesController {
 
 		logger.info("****** Otteniamo le promozioni *******");
 
-<<<<<<< HEAD
 		List<CountriesDao> countries = countriesService.SelTutti();
 
-=======
-		List<CountriesDto> countries = countriesService.SelTutti();
-		
->>>>>>> refs/remotes/origin/updated_dao-dto
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
 		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
@@ -59,21 +54,12 @@ public class CountriesController {
 		}
 
 		logger.info("Numero dei record: " + countries.size());
-<<<<<<< HEAD
 
 		CountriesDto dto = new CountriesDto();
 		dto.setCountriesData(countries);
 
 		response.setResponse(dto);
 
-=======
-		
-//		CountriesDto dto = new CountriesDto();
-//		dto.setCountriesData(countries);
-		
-		response.setResponse(countries);
-		
->>>>>>> refs/remotes/origin/updated_dao-dto
 		return response;
 	}
 
