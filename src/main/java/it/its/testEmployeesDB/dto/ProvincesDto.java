@@ -1,30 +1,29 @@
 package it.its.testEmployeesDB.dto;
 
-<<<<<<< HEAD
 import java.util.List;
 import java.util.Optional;
-=======
+
 import javax.persistence.Column;
-import javax.persistence.Id;
->>>>>>> refs/remotes/origin/updated_dao-dto
 
-import lombok.Getter;
-import lombok.Setter;
+import it.its.testEmployeesDB.dao.ProvincesDao;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProvincesDto {
-<<<<<<< HEAD
+
 	private List<ProvincesDao> provincesData;
 	private Optional<ProvincesDao> provincesDato;
-=======
-	
-	@Id
+
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "description")
 	private String description;
->>>>>>> refs/remotes/origin/updated_dao-dto
 
 }

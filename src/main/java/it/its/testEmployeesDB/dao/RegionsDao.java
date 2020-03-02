@@ -15,14 +15,10 @@ public class RegionsDao {
 	@Id
 	@Column(name = "id")
 	private int id;
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/updated_dao-dto
-	
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "iso_country")
 	private String isoCountry;
 }

@@ -61,12 +61,7 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.10.2</version>
 		</dependency>
-<<<<<<< HEAD
 
-
-=======
-		
->>>>>>> refs/remotes/origin/updated_dao-dto
 	</dependencies>
 
 	<build>

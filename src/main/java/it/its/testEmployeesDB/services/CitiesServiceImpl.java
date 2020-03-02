@@ -21,22 +21,19 @@ public class CitiesServiceImpl implements CitiesService {
 
 	@Override
 	public List<CitiesDto> SelTutti() {
-		List<CitiesDao>dao=cittaRepository.findAll();
-		ArrayList<CitiesDto>dto=new ArrayList<CitiesDto>();
+		List<CitiesDao> dao = cittaRepository.findAll();
+		ArrayList<CitiesDto> dto = new ArrayList<CitiesDto>();
 		for (CitiesDao c : dao) {
-			CitiesDto temp=new CitiesDto();
-			
-			
+			CitiesDto temp = new CitiesDto();
 			dto.add(temp);
 		}
-		
+
 		return dto;
 	}
 
-
 	@Override
 	public void deleteCitiesById(int id) {
-		cittaRepository.deleteById(id);		
+		cittaRepository.deleteById(id);
 	}
 
 	@Override
@@ -47,12 +44,6 @@ public class CitiesServiceImpl implements CitiesService {
 	@Override
 	public void create(CitiesDao city) {
 		cittaRepository.saveAndFlush(city);
-	}
-
-	@Override
-	public void deleteCitiesById(int id) {
-		cittaRepository.deleteById(id);
-
 	}
 
 	@Override

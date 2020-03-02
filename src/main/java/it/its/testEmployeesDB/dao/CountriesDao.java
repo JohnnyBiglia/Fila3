@@ -15,11 +15,7 @@ public class CountriesDao {
 	@Id
 	@Column(name = "iso")
 	private String iso;
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> refs/remotes/origin/updated_dao-dto
 	@Column(name = "description")
 	private String description;
 

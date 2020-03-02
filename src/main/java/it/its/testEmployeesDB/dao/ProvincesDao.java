@@ -8,11 +8,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-<<<<<<< HEAD
-
 @Table(name = "provinces")
-@Table(name = "provinces")
-
 @Data
 public class ProvincesDao {
 
