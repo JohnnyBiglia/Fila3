@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -113,7 +114,7 @@ public class EmployeesController {
 
 	}
 
-	@GetMapping(value = "/delete/{idEmployees}", produces = "application/json") // percorso per richiamare il delete
+	@DeleteMapping(value = "/delete/{idEmployees}", produces = "application/json") // percorso per richiamare il delete
 	public BaseResponseDto<String> deleteEmployeesById(@PathVariable("idEmployees") int idEmployees) {// dichiaro in un
 																										// long, l'ID da
 																										// eliminare
