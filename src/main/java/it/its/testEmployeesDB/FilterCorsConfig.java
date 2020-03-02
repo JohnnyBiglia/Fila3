@@ -14,7 +14,7 @@ public class FilterCorsConfig implements WebMvcConfigurer {
 			public void addCorsMappings(CorsRegistry registry) {
 
 				registry.addMapping("/**").allowedOrigins("http://localhost:4200")
-						.allowedMethods("PUT", "DELETE", "GET", "POST").allowedHeaders("*")
+						.allowedMethods("PUT", "DELETE", "GET", "POST", "PATCH").allowedHeaders("*")
 						.exposedHeaders("header1", "header2").allowCredentials(false).maxAge(4200);
 			}
 		};

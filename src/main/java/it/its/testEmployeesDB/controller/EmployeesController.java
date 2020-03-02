@@ -10,16 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import it.its.testEmployeesDB.dao.EmployeesDao;
 import it.its.testEmployeesDB.dto.BaseResponseDto;
@@ -80,16 +79,13 @@ public class EmployeesController {
 		return response;
 	}
 
-	@PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
-	public BaseResponseDto<EmployeesDao> update(@RequestBody String employeeDetails)
+	@PatchMapping(value = "/update", produces = "application/json")
+	public BaseResponseDto<EmployeesDao> update(@RequestBody EmployeesDao employee)
 			throws JsonMappingException, JsonProcessingException {
 		BaseResponseDto<EmployeesDao> response = new BaseResponseDto<>();
 
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
-
-		ObjectMapper mapper = new ObjectMapper();
-		EmployeesDao employee = mapper.readValue(employeeDetails, EmployeesDao.class);
 
 		if (employee.getId() != 0) {
 			EmployeesDao status = employeesService.update(employee);
@@ -99,7 +95,6 @@ public class EmployeesController {
 			response.setMessage("ID_NON_INSERITO");
 		}
 		return response;
-
 	}
 
 	@PostMapping("/add")
