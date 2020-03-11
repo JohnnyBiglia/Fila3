@@ -9,99 +9,86 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import it.its.testEmployeesDB.dao.EmployeesDao;
+import it.its.testEmployeesDB.dao.UserDao;
 import it.its.testEmployeesDB.dto.BaseResponseDto;
-import it.its.testEmployeesDB.dto.EmployeesDto;
-import it.its.testEmployeesDB.services.EmployeesService;
+import it.its.testEmployeesDB.dto.CountriesDto;
+import it.its.testEmployeesDB.dto.UserDto;
+import it.its.testEmployeesDB.services.UserService;
 
 @RestController
-@RequestMapping(value = "api/employees")
-public class EmployeesController {
-	private static final Logger logger = LoggerFactory.getLogger(EmployeesController.class);
+@RequestMapping(value = "api/user")
+public class UserController {
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired
-	EmployeesService employeesService;
-
-	@GetMapping(produces = "application/json", value = "/fetchOnce/employee/{idEmployees}")
-	public BaseResponseDto<EmployeesDto> SelOnce(@PathVariable("idEmployees") int idEmployees) {
-		BaseResponseDto<EmployeesDto> response = new BaseResponseDto<>();
-
-		Optional<EmployeesDao> employees = employeesService.SelOnce(idEmployees);
-
-		response.setTimestamp(new Date());
-		response.setStatus(HttpStatus.OK.value());
-		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
-
-		EmployeesDto dto = new EmployeesDto();
-		dto.setDipendentiDato(employees);
-
-		response.setResponse(dto);
-
-		return response;
-	}
+	private UserService userService;
 
 	@GetMapping(produces = "application/json")
-	public BaseResponseDto<List<EmployeesDto>> fetchAll() {
+	public BaseResponseDto<List<UserDto>> fetchAll() {
 
-		BaseResponseDto<List<EmployeesDto>> response = new BaseResponseDto<>();
+		BaseResponseDto<List<UserDto>> response = new BaseResponseDto<>();
 
 		logger.info("****** Otteniamo le promozioni *******");
 
-		List<EmployeesDto> dipendenti = employeesService.SelTutti();
+		List<UserDto> user = userService.SelTutti();
 
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
 		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
 
-		if (dipendenti.isEmpty()) {
+		if (user.isEmpty()) {
 			response.setResponse(null);
 			return response;
 		}
 
-		logger.info("Numero dei record: " + dipendenti.size());
+		logger.info("Numero dei record: " + user.size());
 
-		response.setResponse(dipendenti);
+		response.setResponse(user);
 
 		return response;
 	}
 
-	@PatchMapping(value = "/update", produces = "application/json")
-	public BaseResponseDto<EmployeesDao> update(@RequestBody EmployeesDao employee)
+	@PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
+	public BaseResponseDto<UserDao> update(@RequestBody String userDetails)
 			throws JsonMappingException, JsonProcessingException {
-		BaseResponseDto<EmployeesDao> response = new BaseResponseDto<>();
+		BaseResponseDto<UserDao> response = new BaseResponseDto<>();
 
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
 
-		if (employee.getId() != 0) {
-			EmployeesDao status = employeesService.update(employee);
+		ObjectMapper mapper = new ObjectMapper();
+		UserDao user = mapper.readValue(userDetails, UserDao.class);
+
+		if (user.getId() != 0) {
+			UserDao status = userService.update(user);
 			response.setResponse(status);
 			response.setMessage("UPDATE_ELABORATO_CORRETTAMENTE");
 		} else {
 			response.setMessage("ID_NON_INSERITO");
 		}
 		return response;
+
 	}
 
 	@PostMapping("/add")
-	public BaseResponseDto<List<EmployeesDto>> createCity(@RequestBody EmployeesDao empl) {
-		BaseResponseDto<List<EmployeesDto>> response = new BaseResponseDto<>();
+	public BaseResponseDto<List<UserDto>> createUser(@RequestBody UserDao user) {
+		BaseResponseDto<List<UserDto>> response = new BaseResponseDto<>();
 
 		logger.info("****** CREATE *******");
 
-		employeesService.create(empl);
+		userService.create(user);
 
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
@@ -111,15 +98,32 @@ public class EmployeesController {
 
 	}
 
-	@DeleteMapping(value = "/delete/{idEmployees}", produces = "application/json") // percorso per richiamare il delete
-	public BaseResponseDto<String> deleteEmployeesById(@PathVariable("idEmployees") int idEmployees) {// dichiaro in un
-																										// long, l'ID da
-																										// eliminare
+	@GetMapping(produces = "application/json", value = "/fetchOnce/{idUser}")
+	public BaseResponseDto<UserDto> SelOnce(@PathVariable("idUser") int idUser) {
+		BaseResponseDto<UserDto> response = new BaseResponseDto<>();
+
+		Optional<UserDao> user = userService.SelOnce(idUser);
+
+		response.setTimestamp(new Date());
+		response.setStatus(HttpStatus.OK.value());
+		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
+
+		UserDto dto = new UserDto();
+		dto.setUserDato(user);
+
+		response.setResponse(dto);
+
+		return response;
+	}
+
+	@GetMapping(value = "/delete/{idUser}", produces = "application/json") // percorso per richiamare il delete
+	public BaseResponseDto<String> deleteUserById(@PathVariable("idUser") int idUser) {// dichiaro in un long,
+																								// l'ID da eliminare
 		BaseResponseDto<String> response = new BaseResponseDto<String>();
-		logger.info("****** Cancella il dipendente con id " + idEmployees + "******");
+		logger.info("****** Cancella user con id " + idUser + "******");
 
 		try {// se viene cancellato correttament mi esce un messaggio di Deleted
-			employeesService.deleteEmployeesById(idEmployees);
+			userService.deleteUserById(idUser);
 			response.setResponse("Deleted");
 		} catch (EmptyResultDataAccessException ex) {// altrimenti non e' successo nulla
 			response.setResponse("Not found");
@@ -133,5 +137,4 @@ public class EmployeesController {
 		return response;// ritorno la risposta
 
 	}
-
 }

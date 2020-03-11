@@ -1,5 +1,6 @@
 package it.its.testEmployeesDB.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,7 +9,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.its.testEmployeesDB.dao.CitiesDao;
 import it.its.testEmployeesDB.dao.EmployeesDao;
+import it.its.testEmployeesDB.dto.CitiesDto;
+import it.its.testEmployeesDB.dto.EmployeesDto;
 import it.its.testEmployeesDB.repository.EmployeesRepository;
 
 @Service
@@ -19,8 +23,19 @@ public class EmployeesServiceImpl implements EmployeesService {
 	EmployeesRepository dipendentiRepository;
 
 	@Override
-	public List<EmployeesDao> SelTutti() {
-		return dipendentiRepository.findAll();
+	public List<EmployeesDto> SelTutti() {
+		List<EmployeesDao> dao = dipendentiRepository.findAll();
+		ArrayList<EmployeesDto> dto = new ArrayList<EmployeesDto>();
+		for (EmployeesDao c : dao) {
+			EmployeesDto temp = new EmployeesDto();
+			temp.setId(c.getId());
+			temp.setName(c.getName());
+			temp.setSurname(c.getSurname());
+			
+			dto.add(temp);
+		}
+
+		return dto;
 	}
 
 	@Override

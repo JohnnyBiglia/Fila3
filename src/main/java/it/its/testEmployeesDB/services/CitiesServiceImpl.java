@@ -25,6 +25,9 @@ public class CitiesServiceImpl implements CitiesService {
 		ArrayList<CitiesDto> dto = new ArrayList<CitiesDto>();
 		for (CitiesDao c : dao) {
 			CitiesDto temp = new CitiesDto();
+			temp.setId(c.getId());
+			temp.setDescription((c.getDescription()));
+			
 			dto.add(temp);
 		}
 
