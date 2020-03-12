@@ -13,4 +13,6 @@ public interface EmployeesService {
 	public void deleteEmployeesById(int id);
 	public void create(EmployeesDao empl);
 	public Optional<EmployeesDao> SelOnce(int idEmployees);
+
+	public List<EmployeesDto> filterEmployees(String param);
 }

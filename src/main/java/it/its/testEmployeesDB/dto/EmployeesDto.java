@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public class EmployeesDto {
 
-	private List<EmployeesDao> dipendentiData;
+
 	private Optional<EmployeesDao> dipendentiDato;
 
 	@Column(name = "id")

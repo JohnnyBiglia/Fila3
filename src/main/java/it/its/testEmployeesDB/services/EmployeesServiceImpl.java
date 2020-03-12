@@ -27,12 +27,14 @@ public class EmployeesServiceImpl implements EmployeesService {
 		List<EmployeesDao> dao = dipendentiRepository.findAll();
 		ArrayList<EmployeesDto> dto = new ArrayList<EmployeesDto>();
 		for (EmployeesDao c : dao) {
+
 			EmployeesDto temp = new EmployeesDto();
 			temp.setId(c.getId());
 			temp.setName(c.getName());
 			temp.setSurname(c.getSurname());
-			
+
 			dto.add(temp);
+
 		}
 
 		return dto;
@@ -57,5 +59,49 @@ public class EmployeesServiceImpl implements EmployeesService {
 	public void create(EmployeesDao empl) {
 		dipendentiRepository.saveAndFlush(empl);
 
+	}
+
+	@Override
+	public List<EmployeesDto> filterEmployees(String param) {
+		List<EmployeesDao> dao = dipendentiRepository.findAll();
+		ArrayList<EmployeesDto> dto = new ArrayList<EmployeesDto>();
+		for (EmployeesDao c : dao) {
+			if(param.equals("")) {
+				EmployeesDto temp = new EmployeesDto();
+				temp.setId(c.getId());
+				temp.setName(c.getName());
+				temp.setSurname(c.getSurname());
+
+				dto.add(temp);
+			}
+			else if(param.equals(c.getName())) {
+				EmployeesDto temp = new EmployeesDto();
+				temp.setId(c.getId());
+				temp.setName(c.getName());
+				temp.setSurname(c.getSurname());
+
+				dto.add(temp);
+			}
+			else if(param.equals(c.getSurname())) {
+				EmployeesDto temp = new EmployeesDto();
+				temp.setId(c.getId());
+				temp.setName(c.getName());
+				temp.setSurname(c.getSurname());
+
+				dto.add(temp);
+			}
+			else if(param.equals(c.getEmail())) {
+				EmployeesDto temp = new EmployeesDto();
+				temp.setId(c.getId());
+				temp.setName(c.getName());
+				temp.setSurname(c.getSurname());
+
+				dto.add(temp);
+			}
+
+
+		}
+
+		return dto;
 	}
 }

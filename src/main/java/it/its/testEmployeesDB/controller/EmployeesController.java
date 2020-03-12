@@ -76,6 +76,32 @@ public class EmployeesController {
 
 		return response;
 	}
+	@GetMapping(value="/filter/{param}",produces = "application/json")
+	public BaseResponseDto<List<EmployeesDto>> filter(@PathVariable("param") String param) {
+
+		BaseResponseDto<List<EmployeesDto>> response = new BaseResponseDto<>();
+
+		logger.info("****** Otteniamo le promozioni *******");
+
+		List<EmployeesDto> dipendenti = employeesService.filterEmployees(param);
+
+		response.setTimestamp(new Date());
+		response.setStatus(HttpStatus.OK.value());
+		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
+
+		if (dipendenti.isEmpty()) {
+			response.setResponse(null);
+			return response;
+		}
+
+		logger.info("Numero dei record: " + dipendenti.size());
+
+		response.setResponse(dipendenti);
+		
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAA:  "+response+" "+param);
+
+		return response;
+	}
 
 	@PatchMapping(value = "/update", produces = "application/json")
 	public BaseResponseDto<EmployeesDao> update(@RequestBody EmployeesDao employee)

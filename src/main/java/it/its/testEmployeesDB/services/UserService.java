@@ -3,6 +3,8 @@ package it.its.testEmployeesDB.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+
 import it.its.testEmployeesDB.dao.UserDao;
 import it.its.testEmployeesDB.dao.UserDao;
 import it.its.testEmployeesDB.dto.CitiesDto;
@@ -19,4 +21,6 @@ public interface UserService {
 	public Optional<UserDao> SelOnce(int idUser);
 
 	public void deleteUserById(int id);
+	
+	public HttpStatus skyscanner();
 }

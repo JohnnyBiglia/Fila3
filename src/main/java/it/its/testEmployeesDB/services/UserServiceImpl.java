@@ -7,7 +7,14 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import it.its.testEmployeesDB.dao.CountriesDao;
 import it.its.testEmployeesDB.dao.ProvincesDao;
@@ -59,5 +66,31 @@ public class UserServiceImpl implements UserService {
 
 		}
 		return dto;
+	}
+
+	@Override
+	public HttpStatus skyscanner() {
+		
+		HttpHeaders headers=new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		
+		HttpEntity<String>request=new HttpEntity<String>("hello",headers);
+		
+		RestTemplate restTemplate=new RestTemplate();
+		
+		ResponseEntity<String> responseEntity=restTemplate.exchange("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0", HttpMethod.POST,request,String.class);
+		responseEntity.getStatusCode();
+		
+		if(responseEntity.getStatusCode().equals(HttpStatus.OK)) {
+			responseEntity.getBody();
+		}
+		
+		else {
+			return HttpStatus.BAD_REQUEST;
+		}
+		return null;
+		
+		
+		
 	}
 }

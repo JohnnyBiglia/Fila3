@@ -26,6 +26,7 @@ import it.its.testEmployeesDB.dto.BaseResponseDto;
 import it.its.testEmployeesDB.dto.CountriesDto;
 import it.its.testEmployeesDB.dto.UserDto;
 import it.its.testEmployeesDB.services.UserService;
+import sun.rmi.transport.proxy.HttpReceiveSocket;
 
 @RestController
 @RequestMapping(value = "api/user")
@@ -136,5 +137,11 @@ public class UserController {
 
 		return response;// ritorno la risposta
 
+	}
+	
+	@GetMapping(value="/sky",produces = "application/json")
+	public HttpStatus callToExtApi() {
+		
+		return userService.skyscanner();
 	}
 }
