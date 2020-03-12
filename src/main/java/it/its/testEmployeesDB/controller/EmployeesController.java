@@ -2,6 +2,7 @@ package it.its.testEmployeesDB.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -53,18 +55,22 @@ public class EmployeesController {
 	}
 
 	@GetMapping(produces = "application/json")
-	public BaseResponseDto<List<EmployeesDto>> fetchAll() {
+	public BaseResponseDto<List<EmployeesDto>> fetchAll(@RequestParam Map<String, String> allParams) {
 
 		BaseResponseDto<List<EmployeesDto>> response = new BaseResponseDto<>();
 
 		logger.info("****** Otteniamo le promozioni *******");
-
-		List<EmployeesDto> dipendenti = employeesService.SelTutti();
+		List<EmployeesDto> dipendenti;
 
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
 		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
-
+		if (!allParams.isEmpty()) {
+			response.setResponse(employeesService.filterEmployees(allParams));
+			return response;
+		} else {
+			dipendenti = employeesService.SelTutti();
+		}
 		if (dipendenti.isEmpty()) {
 			response.setResponse(null);
 			return response;
@@ -76,32 +82,33 @@ public class EmployeesController {
 
 		return response;
 	}
-	@GetMapping(value="/filter/{param}",produces = "application/json")
-	public BaseResponseDto<List<EmployeesDto>> filter(@PathVariable("param") String param) {
 
-		BaseResponseDto<List<EmployeesDto>> response = new BaseResponseDto<>();
-
-		logger.info("****** Otteniamo le promozioni *******");
-
-		List<EmployeesDto> dipendenti = employeesService.filterEmployees(param);
-
-		response.setTimestamp(new Date());
-		response.setStatus(HttpStatus.OK.value());
-		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
-
-		if (dipendenti.isEmpty()) {
-			response.setResponse(null);
-			return response;
-		}
-
-		logger.info("Numero dei record: " + dipendenti.size());
-
-		response.setResponse(dipendenti);
-		
-		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAA:  "+response+" "+param);
-
-		return response;
-	}
+//	@GetMapping(value = "/filter/{param}", produces = "application/json")
+//	public BaseResponseDto<List<EmployeesDto>> filter(@PathVariable("param") EmployeesDao param) {
+//
+//		BaseResponseDto<List<EmployeesDto>> response = new BaseResponseDto<>();
+//
+//		logger.info("****** Otteniamo le promozioni *******");
+//
+//		List<EmployeesDto> dipendenti = employeesService.filterEmployees(param);
+//
+//		response.setTimestamp(new Date());
+//		response.setStatus(HttpStatus.OK.value());
+//		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
+//
+//		if (dipendenti.isEmpty()) {
+//			response.setResponse(null);
+//			return response;
+//		}
+//
+//		logger.info("Numero dei record: " + dipendenti.size());
+//
+//		response.setResponse(dipendenti);
+//
+//		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAA:  " + response + " " + param);
+//
+//		return response;
+//	}
 
 	@PatchMapping(value = "/update", produces = "application/json")
 	public BaseResponseDto<EmployeesDao> update(@RequestBody EmployeesDao employee)
