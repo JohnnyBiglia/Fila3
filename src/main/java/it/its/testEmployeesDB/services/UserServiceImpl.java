@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService {
 		RestTemplate restTemplate=new RestTemplate();
 		
 		ResponseEntity<String> responseEntity=restTemplate.exchange("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0", HttpMethod.POST,request,String.class);
-		responseEntity.getStatusCode(); 
+		responseEntity.getStatusCode();  
 		
 		if(responseEntity.getStatusCode().equals(HttpStatus.OK)) {
 			responseEntity.getBody();
