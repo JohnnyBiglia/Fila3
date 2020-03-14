@@ -94,11 +94,7 @@ public class EmployeesController {
 			return response;
 		}
 
-		logger.info("Numero dei record: " + dipendenti.size());
-
 		response.setResponse(dipendenti);
-		
-		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAA:  "+response+" "+param);
 
 		return response;
 	}

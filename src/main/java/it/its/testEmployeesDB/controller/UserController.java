@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import it.its.testEmployeesDB.dao.UserDao;
 import it.its.testEmployeesDB.dto.BaseResponseDto;
 import it.its.testEmployeesDB.dto.CountriesDto;
+import it.its.testEmployeesDB.dto.EmployeesDto;
 import it.its.testEmployeesDB.dto.UserDto;
 import it.its.testEmployeesDB.services.UserService;
 import sun.rmi.transport.proxy.HttpReceiveSocket;
@@ -137,6 +138,29 @@ public class UserController {
 
 		return response;// ritorno la risposta
 
+	}
+	
+	@GetMapping(value="/filter/{param}",produces = "application/json")
+	public BaseResponseDto<List<EmployeesDto>> filter(@PathVariable("param") String param) {
+
+		BaseResponseDto<List<EmployeesDto>> response = new BaseResponseDto<>();
+
+		logger.info("****** Otteniamo le promozioni *******");
+
+		List<UserDto> dipendenti = userService.filterUsers(param);
+
+		response.setTimestamp(new Date());
+		response.setStatus(HttpStatus.OK.value());
+		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
+
+		if (dipendenti.isEmpty()) {
+			response.setResponse(null);
+			return response;
+		}
+
+		response.setResponse(dipendenti);
+
+		return response;
 	}
 	
 
