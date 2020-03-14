@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 public class RestApiController {
 	
 	@RequestMapping(value="/nazioni")
-	public String restNazioni() {
+	public String restNazioni() {   
 		
 		HttpHeaders headers=new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
