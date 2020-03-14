@@ -139,9 +139,5 @@ public class UserController {
 
 	}
 	
-	@GetMapping(value="/sky",produces = "application/json")
-	public HttpStatus callToExtApi() {
-		
-		return userService.skyscanner();
-	}
+
 }
