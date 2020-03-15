@@ -17,7 +17,6 @@ import lombok.Setter;
 
 public class UserDto {
 
-	private List<UserDao> userData;
 	private Optional<UserDao> userDato;
 	
 	@Id
@@ -25,7 +24,7 @@ public class UserDto {
 	private int id;
 
 	@Column(name = "name")
-	private String nome;
+	private String name;
 
 	@Column(name = "ruolo")
 	private String ruolo;

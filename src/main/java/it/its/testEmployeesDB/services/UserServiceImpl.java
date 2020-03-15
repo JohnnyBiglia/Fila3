@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
 		for (UserDao d : dao) {
 			UserDto temp = new UserDto();
 			temp.setId(d.getId());
-			temp.setNome((d.getNome()));
+			temp.setName((d.getName()));
 			temp.setRuolo(d.getRuolo());
 
 			dto.add(temp);
@@ -72,16 +72,20 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<UserDto> filterUsers(String param) {
+		String[] params = param.split("_");
 		List<UserDao> dao = userRepository.findAll();
 		ArrayList<UserDto> dto = new ArrayList<UserDto>();
 		for (UserDao c : dao) {
-			if (param.equals(c.getNome())) {
-				UserDto temp = new UserDto();
-				temp.setNome(c.getNome());
+			if (params[0].equals(c.getName())) {
+				if(params[1].equals(c.getPassword())) {
+					UserDto temp = new UserDto();
+					temp.setName(c.getName());
 
-				dto.add(temp);
+					dto.add(temp);
+				}
 			}
 		}
+		
 		return dto;
 	}
 }

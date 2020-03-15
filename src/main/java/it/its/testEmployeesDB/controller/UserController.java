@@ -55,8 +55,6 @@ public class UserController {
 			return response;
 		}
 
-		logger.info("Numero dei record: " + user.size());
-
 		response.setResponse(user);
 
 		return response;
@@ -87,8 +85,6 @@ public class UserController {
 	@PostMapping("/add")
 	public BaseResponseDto<List<UserDto>> createUser(@RequestBody UserDao user) {
 		BaseResponseDto<List<UserDto>> response = new BaseResponseDto<>();
-
-		logger.info("****** CREATE *******");
 
 		userService.create(user);
 
@@ -122,7 +118,6 @@ public class UserController {
 	public BaseResponseDto<String> deleteUserById(@PathVariable("idUser") int idUser) {// dichiaro in un long,
 																								// l'ID da eliminare
 		BaseResponseDto<String> response = new BaseResponseDto<String>();
-		logger.info("****** Cancella user con id " + idUser + "******");
 
 		try {// se viene cancellato correttament mi esce un messaggio di Deleted
 			userService.deleteUserById(idUser);
@@ -141,24 +136,20 @@ public class UserController {
 	}
 	
 	@GetMapping(value="/filter/{param}",produces = "application/json")
-	public BaseResponseDto<List<EmployeesDto>> filter(@PathVariable("param") String param) {
-
+	public BaseResponseDto<List<EmployeesDto>> confronta(@PathVariable("param") String param) {
 		BaseResponseDto<List<EmployeesDto>> response = new BaseResponseDto<>();
 
-		logger.info("****** Otteniamo le promozioni *******");
-
-		List<UserDto> dipendenti = userService.filterUsers(param);
+		List<UserDto> user = userService.filterUsers(param);
 
 		response.setTimestamp(new Date());
 		response.setStatus(HttpStatus.OK.value());
 		response.setMessage("SERVIZIO_ELABORATO_CORRETTAMENTE_COME_LA_MAMMA_DI_GIUSEPPE");
 
-		if (dipendenti.isEmpty()) {
+		if (user.isEmpty()) {
 			response.setResponse(null);
 			return response;
 		}
-
-		response.setResponse(dipendenti);
+		response.setResponse(user);
 
 		return response;
 	}

@@ -16,7 +16,7 @@ public class UserDao {
 	private int id;
 
 	@Column(name = "name")
-	private String nome;
+	private String name;
 
 	@Column(name = "password")
 	private String password;
